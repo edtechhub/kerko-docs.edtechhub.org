@@ -1,0 +1,50 @@
+{% extends 'kerko/layout.html.jinja2' %}
+
+{% block meta_title_inner -%}
+    {%- if title %}{{ title|striptags|escape }} – {% endif %}{{ config.KERKO_TITLE|striptags|escape -}}
+{% endblock %}
+
+{% block styles %}
+    {%- assets "css_styles" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {%- endassets %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:400,700&display=swap&subset=latin-ext">
+{% endblock styles %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-white d-print-none">
+        <div class="container">
+            {%- block navbar_brand %}
+                <div class="navbar-brand">
+                    <a class="d-block brand-title" href="{{ config.HOME_URL }}">{{ config.HOME_TITLE }}</a>
+                    <span class="d-block brand-subtitle text-primary">{{ config.HOME_SUBTITLE }}</span>
+                </div>
+            {%- endblock navbar_brand %}
+            {%- block navbar_toggler %}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-text">{{ _('Menu') }}</span>
+                </button>
+            {%- endblock navbar_toggler %}
+            {%- block navbar_content %}
+                <div id="navbar-content" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto justify-content-end">
+                        {%- block navbar_items %}
+                            <li class="nav-item {% if request.endpoint == 'kerko.search' %}active{% endif %}">
+                                <a class="nav-link" href="{{ url_for('kerko.search') }}">{{ config.NAV_TITLE }}</a>
+                            </li>
+                        {%- endblock navbar_items %}
+                    </ul>
+                </div>
+            {%- endblock navbar_content %}
+        </div>
+    </nav>
+{% endblock navbar %}
+
+{% block footer_attributes %}{# Deliberately empty! #}{% endblock %}
+
+{% block body_scripts %}
+    {%- assets "common_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {%- endassets %}
+{% endblock body_scripts %}

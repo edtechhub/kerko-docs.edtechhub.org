@@ -1,0 +1,15 @@
+{% extends 'kerko/base.html.jinja2' %}
+
+{% block head_scripts %}
+    {{- super() }}
+    {%- if config.GOOGLE_ANALYTICS_ID %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.GOOGLE_ANALYTICS_ID }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ config.GOOGLE_ANALYTICS_ID }}');
+        </script>
+    {%- endif %}
+{% endblock head_scripts %}

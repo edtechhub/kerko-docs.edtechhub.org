@@ -1,0 +1,313 @@
+// This is a customized Bootstrap theme, following instructions from
+// https://getbootstrap.com/docs/4.3/getting-started/theming/
+
+// Configure Bootstrap variables.
+// Full list of variables on app/static/src/vendor/bootstrap/scss/_variables.scss
+
+$white: #fff;
+$black: #1b1f22;
+$salmon: #f47452;  // Custom variable.
+
+$theme-colors:
+(
+  "salmon": $salmon,
+);
+
+$primary: $salmon;
+
+$border-color: #efefef;
+$border-radius: 0;
+
+$font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+$font-family-oswald: 'Oswald', "Helvetica Neue", helvetica, arial, sans-serif;  // Custom variable.
+$font-size-base: 1rem;
+$headings-font-family: $font-family-oswald;
+$headings-font-weight: 700;
+
+$h1-font-size: $font-size-base * 2.125;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base * 1.1;
+$h6-font-size: $font-size-base;
+
+$nav-link-font-family: $font-family-oswald;  // Custom variable.
+$nav-link-font-size: $font-size-base * 1.125;  // Custom variable.
+$nav-link-font-weight: 400;  // Custom variable.
+$navbar-padding-y: 1rem;
+$navbar-brand-padding-y: .2em;
+$navbar-brand-font-size: 1.875rem;
+$navbar-toggler-padding-y: .5rem;
+$navbar-light-color: $black;
+$navbar-light-active-color: $black;
+$navbar-light-hover-color: rgba(0,0,0,.7);
+$navbar-light-toggler-border-color: $border-color;
+
+$card-border-color: $border-color;
+$input-border-color: $border-color;
+$dropdown-border-color: $border-color;
+$pagination-border-color: $border-color;
+
+$dropdown-link-hover-bg: #dee2e6;  // $gray-300
+
+// Import selected Bootstrap components.
+// Full list of imports in app/static/src/vendor/bootstrap/scss/bootstrap.scss
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+// @import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+// @import "breadcrumb";
+@import "pagination";
+@import "badge";
+// @import "jumbotron";
+@import "alert";
+// @import "progress";
+// @import "media";
+// @import "list-group";
+@import "close";
+// @import "toasts";
+@import "modal";
+// @import "tooltip";
+// @import "popover";
+// @import "carousel";
+// @import "spinners";
+@import "utilities";
+@import "print";
+
+// Import FontAwesome styles.
+@import "fontawesome.scss";
+@import "solid.scss";
+@import "regular.scss";
+
+// WARNING: Webfonts are manually copied to the 'dist' directory. If upgrading
+// FontAwesome, please manually copy the new webfonts,
+
+
+// WARNING: Some styles below are copied from Kerko. Kerko's stylesheet is not
+// used, thus any change to Kerko's stylesheet might need to be applied here.
+
+
+// General.
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  text-transform: uppercase;
+}
+.list-no-bullets {
+  list-style-type: none;
+}
+.no-decorate:hover,
+.no-decorate:focus {
+  text-decoration: none;
+}
+:hover > .parent-decorate,
+:focus > .parent-decorate {
+  text-decoration: underline;
+}
+.break-word {
+  word-wrap: break-word;  // Older, non-standard name for overflow-wrap.
+  overflow-wrap: break-word;
+}
+.pre-line {
+  white-space: pre-line;
+}
+.w-40 {
+  min-width: 40% !important;
+}
+
+// Layout.
+
+main {
+  min-height: calc(100vh - 6rem - 5.6125rem);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @include media-breakpoint-up(lg) {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+// Headings.
+
+.rule {
+  margin-top: 3.5rem;
+  &::before {
+    content: " ";
+    display: block;
+    height: 4px;
+    background-color: $primary;
+    width: 70px;
+    margin-bottom: 15px;
+  }
+  @media print {
+    margin-top: 0;
+  }
+}
+
+// Navbar.
+
+.navbar {
+  border-bottom: $border-width solid $border-color;
+}
+.navbar-brand {
+  white-space: normal;
+}
+.navbar-toggler {
+  display: block;
+  font-family: $nav-link-font-family;
+  font-size: $nav-link-font-size;
+  font-weight: $nav-link-font-weight;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.navbar-toggler-icon {
+  font-size: $font-size-base * .75;
+  vertical-align: top;
+}
+.nav-item {
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
+  font-family: $nav-link-font-family;
+  font-size: $nav-link-font-size;
+  font-weight: $nav-link-font-weight;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.nav-link {
+  padding: 0 !important;
+  border-bottom: 3px solid transparent;
+  margin-top: $nav-link-padding-y;
+  @include media-breakpoint-up(lg) {
+    margin-top: 0;
+    display: inline-block;
+  }
+  @include hover {
+    border-bottom-color: $primary;
+    .nav-item.active & {
+      color: $navbar-light-hover-color;
+    }
+  }
+}
+.brand-title {
+  font-family: $headings-font-family;
+  font-size: 1.25rem;
+  @include media-breakpoint-up(lg) {
+    font-size: $navbar-brand-font-size;
+  }
+  font-weight: $headings-font-weight;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: $black;
+  @include hover() {
+    color: $black;
+    opacity: .7;
+    text-decoration: none;
+  }
+}
+.brand-subtitle {
+  font-size: $font-size-base;
+  color: $primary;
+  letter-spacing: .05em;
+}
+
+// Buttons.
+
+.btn-primary {
+  color: $white;
+}
+
+// Badge.
+
+.heading-results > .badge {
+  background: transparent;
+  font-size: $font-size-base;
+  font-family: $font-family-sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  text-transform: none;
+  @media print {
+    border: none;
+  }
+}
+
+// Dropdown.
+
+.dropdown-width-300 {
+  width: 300px;
+  max-width: 90vw;
+}
+
+// Print links.
+
+.no-js .print-link {
+  display: none;
+}
+
+// Search.
+
+.breadbox > .card-body {
+  > * {
+    margin-top: 1rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+.search-item {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  a {
+    color: $black;
+    @include hover {
+      color: $black;
+    }
+  }
+}
+.search-abstract {
+  padding-left: 2em;
+  margin-top: .5em;
+  margin-bottom: 1.5em;
+}
+
+// Print media styles.
+
+@media print {
+  .row {
+    // Fix for truncated pages in Firefox (issue with display: flex).
+    // Ref: https://bugzilla.mozilla.org/show_bug.cgi?id=939897
+    // Breaks column layouts, but we can live with that.
+    display: block !important;
+  }
+  .text-md-right.text-print-left {
+    text-align: left !important;
+  }
+  .breadbox a {
+    text-decoration: none;
+  }
+  .search-item a,
+  .item-content a {
+    color: $black;
+    text-decoration: none;
+  }
+}

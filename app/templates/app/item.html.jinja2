@@ -1,0 +1,11 @@
+{% extends 'kerko/item.html.jinja2' %}
+
+{% block kerko_print_js %}
+    {%- if config.KERKO_PRINT_ITEM_LINK %}
+        {%- assets "print_js" %}
+            <script src="{{ ASSET_URL }}"></script>
+        {%- endassets %}
+    {%- endif %}
+{% endblock kerko_print_js %}
+
+{% block item_heading_classes %}rule my-2 clearfix{% endblock %}

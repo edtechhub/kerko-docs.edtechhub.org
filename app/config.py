@@ -2,9 +2,10 @@ import logging
 import pathlib
 
 from environs import Env
-from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as _
 
 from kerko.composer import Composer
+from kerko.specs import CollectionFacetSpec
 
 env = Env()  # pylint: disable=invalid-name
 
@@ -21,6 +22,11 @@ class Config():
     # Set other configuration variables.
     LOGGING_HANDLER = 'default'
     EXPLAIN_TEMPLATE_LOADING = False
+
+    LIBSASS_INCLUDES = [
+        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / 'bootstrap' / 'scss'),
+        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
+    ]
 
     BABEL_DEFAULT_LOCALE = 'en'
     KERKO_WHOOSH_LANGUAGE = 'en'
@@ -42,12 +48,16 @@ class Config():
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
+        exclude_default_facets=['facet_tag', 'facet_link'],
     )
 
-    LIBSASS_INCLUDES = [
-        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / 'bootstrap' / 'scss'),
-        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
-    ]
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            title=_('Topic'),
+            weight=10,
+            collection_key='23WS6R2T',
+        )
+    )
 
 
 class DevelopmentConfig(Config):

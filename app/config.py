@@ -63,7 +63,7 @@ class Config():
 class DevelopmentConfig(Config):
     CONFIG = 'development'
     DEBUG = True
-    ASSETS_DEBUG = env.bool('KERKO_ASSETS_DEBUG', True)  # Don't bundle/minify static assets.
+    ASSETS_DEBUG = env.bool('ASSETS_DEBUG', True)  # Don't bundle/minify static assets.
     KERKO_ZOTERO_START = env.int('KERKO_ZOTERO_START', 0)
     KERKO_ZOTERO_END = env.int('KERKO_ZOTERO_END', 0)
     LIBSASS_STYLE = 'expanded'
@@ -72,7 +72,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     CONFIG = 'production'
     DEBUG = False
-    ASSETS_DEBUG = env.bool('KERKO_ASSETS_DEBUG', False)
+    ASSETS_DEBUG = env.bool('ASSETS_DEBUG', False)
     ASSETS_AUTO_BUILD = False
     LOGGING_HANDLER = 'syslog'
     LOGGING_ADDRESS = '/dev/log'

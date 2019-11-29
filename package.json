@@ -38,17 +38,17 @@
     "target": "app/static/src/vendor/",
     "packages": {
       "@fortawesome/fontawesome-free": {
-        "version": "^5.11.2",
+        "version": "5.11.2",
         "src": "/*",
         "namespaced": true
       },
       "bootstrap": {
-        "version": "^4.3.1",
+        "version": "4.3.1",
         "src": "{dist/css/*,scss,js/dist/*}",
         "namespaced": true
       },
       "jquery": {
-        "version": "^3.4.1",
+        "version": "3.4.1",
         "src": "dist/*",
         "namespaced": true
       },

@@ -190,6 +190,7 @@ a Sass stylesheet (from `app/static/src/scss/`), a rebuild of the assets is
 required. With your virtual environment active:
 
 ```bash
+export PATH=`pwd`/node_modules/.bin:${PATH}
 flask assets build
 ```
 
@@ -224,7 +225,7 @@ The following procedure has to be performed only once.
    pip install -r requirements/run.txt
    ```
 
-3. Create the `.env` file. See **Installing the application locally**.
+3. Create the `.env` file. See step 2 of **Installing the application locally**.
 
 4. Have EdTechHubLib retrieve your data from zotero.org:
 

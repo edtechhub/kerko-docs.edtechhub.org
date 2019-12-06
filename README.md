@@ -1,8 +1,7 @@
 # EdTechHubLib - The EdTech Hub Evidence Library application
 
 This application uses [Kerko] to provide a user-friendly search and browsing
-interface for sharing a bibliography managed with the [Zotero] reference
-manager.
+web interface for a bibliography managed with the [Zotero] reference manager.
 
 ## About this application
 
@@ -111,13 +110,13 @@ Pre-requisites:
    flask run
    ```
 
-   Press CTRL+C from the terminal if you wish to stop the server.
-
-   Note that Flask's built-in server is **not suitable for production** as it
-   doesn't scale well, but is is perfectly adequate for development.
-
 5. With the server running, open http://localhost:5000/ in your browser to use
    the application.
+
+Press CTRL+C from the terminal if you wish to stop the server.
+
+Note that Flask's built-in server is **not suitable for production** as it
+doesn't scale well, but is is perfectly adequate for development.
 
 ### Upgrading Python dependencies
 
@@ -127,16 +126,18 @@ the application. Those are specified in `requirements/run.in` and
 `requirements/dev.in`. To ensure reproducible results, exact package versions
 are pinned into `requirements/run.txt` and `requirements/dev.txt`.
 
-With your virtual environment active, to upgrade a package PACKAGE of the _run_
-dependencies to its latest version:
+With your virtual environment active, to upgrade a package PACKAGE to its latest
+version and synchronize all installed dependencies:
 
 ```bash
-pip-compile --upgrade-package PACKAGE --output-file requirements/run.txt
-pip-sync requirements/run.txt
+pip-compile --upgrade-package PACKAGE --output-file requirements/run.in
+pip-compile --upgrade-package PACKAGE --output-file requirements/dev.in
+pip-sync requirements/dev.txt
 ```
 
-After adequate testing, the updated `requirements/run.txt` file can be pushed to
-the code repository.
+After adequate testing, both of the updated `requirements/run.in` and
+`requirements/run.txt` file can be pushed to the code repository for later
+deployment.
 
 ### Upgrading front-end dependencies
 
@@ -162,7 +163,7 @@ npm install PACKAGE@VERSION --save-dev
 
 After a build (see the **Building the assets** section below) and adequate
 testing, the updated `package.json` and `package-lock.json` files can be pushed
-to the code repository.
+to the code repository for later deployment.
 
 ### Upgrading Kerko or changing Kerko's configuration
 
@@ -201,7 +202,8 @@ export ASSETS_DEBUG=False
 flask assets build
 ```
 
-Then push the changed files from `app/static/dist/` to the code repository.
+Then push the changed files from `app/static/dist/` to the code repository for
+later deployment.
 
 Note: Never manually edit the files in `app/static/dist/css/` or
 `app/static/dist/js/`; any change will be overwritten by the build process.
@@ -259,6 +261,7 @@ production.
 
    ```bash
    # TODO: cd to proper directory
+   rm -rf data.old
    cp -r data data.old
    # TODO: source virtualenv bin/activate
    flask kerko clean index
@@ -274,5 +277,5 @@ production.
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
-[pip-tools]: https://github.com/jazzband/pip-tools
 [virtualenv]: https://virtualenv.pypa.io/en/latest/
+[Zotero]: https://www.zotero.org/

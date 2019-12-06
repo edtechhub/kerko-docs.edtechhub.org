@@ -272,10 +272,12 @@ production.
    revert back to it.
 
 
+[Flask]: https://pypi.org/project/Flask/
 [Kerko]: https://github.com/whiskyechobravo/kerko
 [Kerko_changelog]: https://github.com/whiskyechobravo/kerko/blob/master/CHANGELOG.md
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
+[Python]: https://www.python.org/
 [virtualenv]: https://virtualenv.pypa.io/en/latest/
 [Zotero]: https://www.zotero.org/

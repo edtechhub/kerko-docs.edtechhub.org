@@ -258,12 +258,12 @@ The following procedure has to be performed only once.
 
 9.  Synchronize data from zotero.org:
 
-   ```bash
-   cd {home}
-   {python_env}/bin/flask kerko sync
-   ```
+    ```bash
+    cd {home}
+    {python_env}/bin/flask kerko sync
+    ```
 
-   TODO: home & flask paths?
+    TODO: home & flask paths?
 
 11. In a browser, check that the site works.
 

@@ -4,8 +4,8 @@
 #
 #    pip-compile requirements/run.in
 #
--e git+https://github.com/whiskyechobravo/kerko.git@ec4a802f6#egg=kerko
--e git+https://github.com/miracle2k/webassets.git@e3e82114#egg=webassets
+git+https://github.com/whiskyechobravo/kerko.git@ec4a802f6#egg=kerko
+git+https://github.com/miracle2k/webassets.git@e3e82114#egg=webassets
 babel==2.7.0
 bibtexparser==1.1.0       # via pyzotero
 bootstrap-flask==1.1.0

@@ -15,20 +15,20 @@ Some things to know:
   Kerko, it is relatively small and can follow its own destiny, separate from
   KerkoApp's.
 - Configuration is generally done in `app/config.py`, except for secret keys
-  that should not be stored in source control (per the [Twelve-factor
+  that should _not_ be stored in source control (per the [Twelve-factor
   App](https://12factor.net/config) methodology).
 - Some of Kerko's templates are overridden (see the `app/templates/app/`
   directory).
 - The custom Sass stylesheet takes advantage of Bootstrap's theming capabilities
   (see `app/static/src/scss/styles.scss`).
 - Front-end assets such as CSS, JavaScript and icons are bundled with the
-  application. In production, these bundles are statically served from the
+  application. In production, these files are statically served from the
   `app/static/dist/` directory.
 - Similarly to back-end Python packages, front-end dependencies are retrieved
   during the installation process. While the former go into your Python virtual
   environment, the latter go to the `app/static/src/vendor/` directory, which
   should not be stored in the code repository.
-- If some source assets are modified, you have to run a build process, which
+- If some source assets are modified, you have to run the build process, which
   generates the content of `app/static/dist/` from source assets in
   `app/static/src/`. You normally push the resulting files from
   `app/static/dist/` to the code repository, so that the built assets can be
@@ -38,27 +38,26 @@ Some things to know:
 
 Making changes to EdTechHubLib requires a Python development environment. Once
 the changes are tested in that environment, they can be pushed to the Git
-repository and deployed on the production server (for deployment, see the
-**Deploying EdTechHubLib** section).
-
-Note: All shell commands below are to be executed from the application's root
-directory, i.e., the one that contains the file `wsgi.py`.
+repository and deployed on the production server (see the **Deploying
+EdTechHubLib in production** section).
 
 ### Installing the application locally
 
 Pre-requisites:
 
-- Set up a Python [virtual environment][virtualenv] using the same Python
-  version as the production server: Python 3.7.
+- A Python [virtual environment][virtualenv] using the same Python
+  version as the production server (Python 3.7).
 - Install [Node.js] (recommended version: 10.x or later). Node.js provides
   [npm], a package manager that is required to install some of the application's
   front-end dependencies.
+
+Steps:
 
 1. With the virtual environment active, install the software by running the
    following shell commands:
 
    ```bash
-   git clone https://github.com/edtechhub/eht-evidence-library-kerko.git edtechhublib
+   git clone https://github.com/edtechhub/eth-evidence-library-kerko.git edtechhublib
    cd edtechhublib
    pip install -r requirements/dev.txt
    npm install
@@ -81,7 +80,7 @@ Pre-requisites:
    * `KERKO_ZOTERO_LIBRARY_TYPE`: The type of library on zotero.org (either
      `'user'` for your main personal library, or `'group'` for a group library).
 
-3. Have EdTechHubLib retrieve your data from zotero.org:
+3. Synchronize data from zotero.org:
 
    ```bash
    flask kerko sync
@@ -120,11 +119,12 @@ doesn't scale well, but is is perfectly adequate for development.
 
 ### Upgrading Python dependencies
 
-There are two types of Python dependencies: _run_ dependencies, which are
-required to run the application; _dev_ dependencies, which are required to build
-the application. Those are specified in `requirements/run.in` and
-`requirements/dev.in`. To ensure reproducible results, exact package versions
-are pinned into `requirements/run.txt` and `requirements/dev.txt`.
+There are two types of Python dependencies: (1) _run_ dependencies, which are
+required to run the application; (2) _dev_ dependencies, which are required to
+build the application. Those are specified in `requirements/run.in` and
+`requirements/dev.in` respectively. To ensure reproducible results, exact
+package versions are pinned into `requirements/run.txt` and
+`requirements/dev.txt`.
 
 With your virtual environment active, to upgrade a package PACKAGE to its latest
 version and synchronize all installed dependencies:
@@ -135,15 +135,14 @@ pip-compile --upgrade-package PACKAGE --output-file requirements/dev.in
 pip-sync requirements/dev.txt
 ```
 
-After adequate testing, both of the updated `requirements/run.in` and
-`requirements/run.txt` file can be pushed to the code repository for later
-deployment.
+After adequate testing, the updated `requirements/{dev,run}.{in,txt}` files can
+be pushed to the repository for later deployment.
 
 ### Upgrading front-end dependencies
 
-There are two types of front-end dependencies: _asset_ dependendies, parts of
-which are ingested by the build process to be packaged into bundles, e.g.,
-Bootstrap, jQuery; _dev_ dependencies, which are tools required by the build
+There are two types of front-end dependencies: (1) _asset_ dependencies, parts
+of which are ingested by the build process and packaged into bundles, e.g.,
+Bootstrap, jQuery; (2) _dev_ dependencies, which are tools required by the build
 process, e.g., clean-css-cli, postcss-cli.
 
 To upgrade an _asset_ dependency, manually edit the package's specification in
@@ -154,7 +153,7 @@ command:
 npm install
 ```
 
-To upgrade a package PACKAGE _dev_ dependency to a version VERSION, run this
+To upgrade a _dev_ dependency PACKAGE to a version VERSION, run the following
 command:
 
 ```bash
@@ -163,19 +162,19 @@ npm install PACKAGE@VERSION --save-dev
 
 After a build (see the **Building the assets** section below) and adequate
 testing, the updated `package.json` and `package-lock.json` files can be pushed
-to the code repository for later deployment.
+to the repository.
 
 ### Upgrading Kerko or changing Kerko's configuration
 
 Kerko can be upgraded like regular Python packages (see **Upgrading Python
-dependencies**). However, make sure to check [Kerko's
-changelog][Kerko_changelog]. The upgrade may require some changes to
-EdTechHubLib or a rebuild of the search index.
+dependencies**). However, make sure to check [Kerko's changelog][Kerko_changelog].
+The upgrade may require some changes to EdTechHubLib, or a rebuild of the search
+index.
 
 Similarly, some change to Kerko's configuration, especially changes to the
 `KERKO_COMPOSER` variable in EdTechHubLib's `app/config.py`, may have an impact
 on the structure of the search index. A rebuild of the search index may be
-necessary.
+necessary after such change.
 
 With your virtual environment active, to rebuild the search index:
 
@@ -188,7 +187,8 @@ flask kerko sync
 
 If some front-end dependencies have been upgraded or if you have manually edited
 a Sass stylesheet (from `app/static/src/scss/`), a rebuild of the assets is
-required. With your virtual environment active:
+required. From the application's directory (the one that contains `wsgi.py`),
+and with your virtual environment active:
 
 ```bash
 export PATH=`pwd`/node_modules/.bin:${PATH}
@@ -202,75 +202,111 @@ export ASSETS_DEBUG=False
 flask assets build
 ```
 
-Then push the changed files from `app/static/dist/` to the code repository for
-later deployment.
+Then push the updated files from `app/static/dist/` to the repository for later
+deployment.
 
 Note: Never manually edit the files in `app/static/dist/css/` or
 `app/static/dist/js/`; any change will be overwritten by the build process.
 
-## Deploying EdTechHubLib in production
+## Deploying EdTechHubLib
 
-There are two types of deployment: the initial installation or the update of an existing installation.
+There are two types of deployment: the initial installation or the deployment of
+changes to an existing installation.
 
 ### Installing the application on Gandi
 
 The following procedure has to be performed only once.
 
-1. TODO: Set up the account, DNS, Apache config, etc.
+1. [Create](https://docs.gandi.net/en/simple_hosting/instance_management/create.html)
+   a new Simple Hosting instance.
 
-2. With the virtual environment active, install the software by running the
-   following shell commands:
+2. [Add SSH key(s)](https://docs.gandi.net/en/simple_hosting/connection/ssh_key.html#adding-a-public-ssh-key-to-your-instance)
+   to the instance.
 
-   ```bash
-   # TODO: git clone https://github.com/edtechhub/eht-evidence-library-kerko.git edtechhublib
-   # TODO: cd edtechhublib
-   pip install -r requirements/run.txt
-   ```
+3. [Link domain](https://docs.gandi.net/en/simple_hosting/common_operations/link_to_domain.html)
+   to the instance.
 
-3. Create the `.env` file. See step 2 of **Installing the application locally**.
-
-4. Have EdTechHubLib retrieve your data from zotero.org:
+4. [Add Git remote](https://docs.gandi.net/en/simple_hosting/connection/git.html)
+   to the local Git repository, e.g.:
 
    ```bash
-   flask kerko sync
+   GIT_URL="ssh+git://{instance_id}@git.{datacenter_id}.gpaas.net"
+   git remote add gandi $GIT_URL/default.git
    ```
 
-5. TODO: Set up cron job
+   (Replace {instance_id} and {datacenter_id} with the appropriate values)
 
-### Updating the existing installation on Gandi
+5. Deploy to the instance, e.g.:
+
+   ```bash
+   ssh $GIT_URL 'deploy default.git'
+   ```
+
+6. [Activate](https://docs.gandi.net/en/simple_hosting/connection/ssh.html) the
+   Emergency Console (SSH)
+
+7. SSH into the instance (requires instance password, SSH keys not supported):
+
+   ```bash
+   ssh {instance_id}@console.{datacenter_id}.gpaas.net
+   ```
+
+8. In the instance, create the `.env` file. See step 2 of **Installing the
+   application locally** for details.
+
+   TODO: .env path?
+
+9.  Synchronize data from zotero.org:
+
+   ```bash
+   cd {home}
+   {python_env}/bin/flask kerko sync
+   ```
+
+   TODO: home & flask paths?
+
+11. In a browser, check that the site works.
+
+12. Add scheduled task to `/srv/data/etc/cron/anacrontab`, e.g.:
+
+    ```
+    @daily 0 kerkosync cd {home} && {python_env}/bin/flask kerko sync
+    ```
+
+    TODO: home & flask paths?
+
+### Deploying changes to the existing installation on Gandi
 
 The following procedure is necessary to deploy changes to EdTechHubLib into
 production.
 
 1. Once all required changes have been implemented, built, and tested in the
-   development environment, tag and push the new version to the code repository.
-   From the development environment:
+   local environment, tag and push the new version to the repository, e.g.:
 
    ```bash
-   git tag prod-`date +%Y%m%d-%H%M`
-   git push origin master && git push --tags
+   git tag prod-`date -u +%Y%m%d-%H%M`
+   git push gandi master && git push --tags
    ```
 
    If something goes wrong once in production, it will be easy to revert to the
    previously tagged version.
 
-2. TODO: Operations required on Gandi's side. Update code, restart app.
-
-3. If the search index needs to be rebuilt, SSH to the production server and run
-   the following commands:
+2. Deploy to the instance, e.g.:
 
    ```bash
-   # TODO: cd to proper directory
-   rm -rf data.old
-   cp -r data data.old
-   # TODO: source virtualenv bin/activate
-   flask kerko clean index
-   flask kerko sync
+   ssh $GIT_URL 'deploy default.git'
    ```
 
-   The copy command creates a backup of the existing index, in case we need to
-   revert back to it.
+3. If changes require the search index to be rebuilt, SSH to the instance and
+   run the following commands:
 
+   TODO: home & flask paths?
+
+   ```bash
+   cd {home}
+   {python_env}/bin/flask kerko clean index
+   {python_env}/bin/flask kerko sync
+   ```
 
 [Flask]: https://pypi.org/project/Flask/
 [Kerko]: https://github.com/whiskyechobravo/kerko

@@ -56,6 +56,8 @@ class Config():
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
         exclude_default_facets=['facet_tag', 'facet_link'],
+        default_child_whitelist_re='^publishPDF$',
+        default_child_blacklist_re='',
     )
 
     # Themes facet.

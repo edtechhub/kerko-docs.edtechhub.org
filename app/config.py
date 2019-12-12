@@ -3,9 +3,14 @@ import pathlib
 
 from environs import Env
 from flask_babelex import gettext as _
+from whoosh.fields import BOOLEAN
+from whoosh.query import Term
 
+from kerko.codecs import BooleanFacetCodec
 from kerko.composer import Composer
-from kerko.specs import CollectionFacetSpec
+from kerko.extractors import InCollectionExtractor
+from kerko.renderers import TemplateStringRenderer
+from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec, FlatFacetSpec
 
 env = Env()  # pylint: disable=invalid-name
 env.read_env()
@@ -53,11 +58,63 @@ class Config():
         exclude_default_facets=['facet_tag', 'facet_link'],
     )
 
+    # Themes facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
-            title=_('Topic'),
+            key='facet_themes',
+            filter_key='theme',
+            title=_('Themes'),
             weight=10,
             collection_key='23WS6R2T',
+        )
+    )
+
+    # Our publications facet and badge.f
+    KERKO_COMPOSER.add_facet(
+        FlatFacetSpec(
+            key='facet_ours',
+            title=_('Our publications') + ' <span class="fas fa-star" aria-hidden="true"></span>',
+            filter_key='ours',
+            weight=15,
+            field_type=BOOLEAN,
+            extractor=InCollectionExtractor('SGAGGGLK'),
+            codec=BooleanFacetCodec(false_value='', false_label=''),
+            missing_label=None,
+            sort_key=['label'],
+            sort_reverse=False,
+            item_view=False,
+            allow_overlap=False,
+            query_class=Term,
+        )
+    )
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='ours',
+            field_type=BOOLEAN(stored=True),
+            extractor=InCollectionExtractor('SGAGGGLK'),
+        )
+    )
+    KERKO_COMPOSER.add_badge(
+        BadgeSpec(
+            key='ours',
+            field=KERKO_COMPOSER.fields['ours'],
+            activator=lambda field, item: bool(item.get(field.key)),
+            renderer=TemplateStringRenderer(
+                '<span class="fas fa-star" title="{title}"'
+                ' aria-hidden="true"></span>'.format(title=_('Our publications'))
+            ),
+            weight=0,
+        )
+    )
+
+    # References facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_references',
+            filter_key='ref',
+            title=_('References'),
+            weight=20,
+            collection_key='GQH9J3MJ',
         )
     )
 

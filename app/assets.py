@@ -2,7 +2,7 @@ from flask_assets import Bundle, Environment
 
 
 scss_styles = Bundle(  # pylint: disable=invalid-name
-    'src/scss/styles.scss',
+    'src/app/scss/styles.scss',
     filters='libsass',
     depends='**/*.scss',
     output='build/css/styles.css',

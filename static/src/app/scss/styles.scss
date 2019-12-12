@@ -2,7 +2,7 @@
 // https://getbootstrap.com/docs/4.3/getting-started/theming/
 
 // Configure Bootstrap variables.
-// Full list of variables on app/static/src/vendor/bootstrap/scss/_variables.scss
+// Full list of variables in 'assets/vendor/bootstrap/scss/_variables.scss'.
 
 $white: #fff;
 $black: #1b1f22;
@@ -51,7 +51,7 @@ $pagination-border-color: $border-color;
 $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 
 // Import selected Bootstrap components.
-// Full list of imports in app/static/src/vendor/bootstrap/scss/bootstrap.scss
+// Full list of imports in 'assets/vendor/bootstrap/scss/bootstrap.scss'.
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -95,7 +95,7 @@ $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 @import "solid.scss";
 @import "regular.scss";
 
-// WARNING: Webfonts are manually copied to the 'dist' directory. If upgrading
+// WARNING: Webfonts are manually copied to the 'static' directory. If upgrading
 // FontAwesome, please manually copy the new webfonts,
 
 

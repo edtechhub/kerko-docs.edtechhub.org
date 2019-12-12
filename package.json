@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git@git.whiskyechobravo.com:clients/edtechhub/edtechhublib"
   },
-  "//": "Browserslist taken from app/static/src/vendor/bootstrap/.browserslistrc",
+  "//": "Browserslist taken from static/src/vendor/bootstrap/.browserslistrc",
   "browserslist": [
     ">= 1%",
     "last 1 major version",
@@ -35,7 +35,7 @@
   },
   "dependencies": {},
   "frontendDependencies": {
-    "target": "app/static/src/vendor/",
+    "target": "static/src/vendor/",
     "packages": {
       "@fortawesome/fontawesome-free": {
         "version": "5.11.2",

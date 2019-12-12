@@ -31,8 +31,8 @@ class Config():
     EXPLAIN_TEMPLATE_LOADING = False
 
     LIBSASS_INCLUDES = [
-        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / 'bootstrap' / 'scss'),
-        str(pathlib.Path(__file__).parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
+        str(pathlib.Path(__file__).parent.parent / 'static' / 'src' / 'vendor' / 'bootstrap' / 'scss'),
+        str(pathlib.Path(__file__).parent.parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
     ]
 
     BABEL_DEFAULT_LOCALE = 'en'

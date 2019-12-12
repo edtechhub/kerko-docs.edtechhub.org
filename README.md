@@ -20,19 +20,18 @@ Some things to know:
 - Some of Kerko's templates are overridden (see the `app/templates/app/`
   directory).
 - The custom Sass stylesheet takes advantage of Bootstrap's theming capabilities
-  (see `app/static/src/scss/styles.scss`).
+  (see `static/src/app/scss/styles.scss`).
 - Front-end assets such as CSS, JavaScript and icons are bundled with the
   application. In production, these files are statically served from the
-  `app/static/dist/` directory.
+  `static/dist/` directory.
 - Similarly to back-end Python packages, front-end dependencies are retrieved
   during the installation process. While the former go into your Python virtual
-  environment, the latter go to the `app/static/src/vendor/` directory, which
-  should not be stored in the code repository.
-- If some source assets are modified, you have to run the build process, which
-  generates the content of `app/static/dist/` from source assets in
-  `app/static/src/`. You normally push the resulting files from
-  `app/static/dist/` to the code repository, so that the built assets can be
-  used on the production server.
+  environment, the latter go to the `static/src/vendor/` directory, which should
+  not be stored in the code repository.
+- If some source assets from `static/src/` are modified, you have to run the
+  build process, which generates the content of `static/dist/`. You normally
+  push the resulting files from `static/dist/` to the code repository, so that
+  the built assets can be used on the production server.
 
 ## Developing EdTechHubLib
 
@@ -186,7 +185,7 @@ flask kerko sync
 ### Building the assets
 
 If some front-end dependencies have been upgraded or if you have manually edited
-a Sass stylesheet (from `app/static/src/scss/`), a rebuild of the assets is
+a Sass stylesheet (from ``static/src/app/scss/`), a rebuild of the assets is
 required. From the application's directory (the one that contains `wsgi.py`),
 and with your virtual environment active:
 
@@ -202,11 +201,11 @@ export ASSETS_DEBUG=False
 flask assets build
 ```
 
-Then push the updated files from `app/static/dist/` to the repository for later
-deployment.
+Then push the updated files from the `static/dist/` directory to the repository
+for later deployment.
 
-Note: Never manually edit the files in `app/static/dist/css/` or
-`app/static/dist/js/`; any change will be overwritten by the build process.
+Note: Never manually edit the files in `static/dist/css/` or `static/dist/js/`;
+any change will be overwritten by the build process.
 
 ## Deploying EdTechHubLib
 

@@ -251,29 +251,23 @@ The following procedure has to be performed only once.
    ssh {instance_id}@console.{datacenter_id}.gpaas.net
    ```
 
-8. In the instance, create the `.env` file. See step 2 of **Installing the
-   application locally** for details.
-
-   TODO: .env path?
+8. In the instance, create the `.env` file in `/srv/data/web/vhosts/default/`.
+   See step 2 of **Installing the application locally** for details.
 
 9.  Synchronize data from zotero.org:
 
     ```bash
-    cd {home}
-    {python_env}/bin/flask kerko sync
+    cd /srv/data/web/vhosts/default
+    /srv/data/web/vhosts/default/local/bin/flask kerko sync
     ```
 
-    TODO: home & flask paths?
+10. In a browser, check that the site works.
 
-11. In a browser, check that the site works.
-
-12. Add scheduled task to `/srv/data/etc/cron/anacrontab`, e.g.:
+11. Add scheduled task to `/srv/data/etc/cron/anacrontab`, e.g.:
 
     ```
-    @daily 0 kerkosync cd {home} && {python_env}/bin/flask kerko sync
+    @daily 0 kerkosync cd /srv/data/web/vhosts/default && /srv/data/web/vhosts/default/local/bin/flask kerko sync
     ```
-
-    TODO: home & flask paths?
 
 ### Deploying changes to the existing installation on Gandi
 
@@ -300,12 +294,10 @@ production.
 3. If changes require the search index to be rebuilt, SSH to the instance and
    run the following commands:
 
-   TODO: home & flask paths?
-
    ```bash
-   cd {home}
-   {python_env}/bin/flask kerko clean index
-   {python_env}/bin/flask kerko sync
+   cd /srv/data/web/vhosts/default
+   /srv/data/web/vhosts/default/local/bin/flask kerko clean index
+   /srv/data/web/vhosts/default/local/bin/flask kerko sync
    ```
 
 [Flask]: https://pypi.org/project/Flask/

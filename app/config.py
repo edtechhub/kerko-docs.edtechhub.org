@@ -14,11 +14,12 @@ env.read_env()
 class Config():
     app_dir = pathlib.Path(env.str('FLASK_APP')).parent.absolute()
 
-    # Get secret configuration values from the environment.
+    # Get configuration values from the environment.
     SECRET_KEY = env.str('SECRET_KEY')
     KERKO_ZOTERO_API_KEY = env.str('KERKO_ZOTERO_API_KEY')
     KERKO_ZOTERO_LIBRARY_ID = env.str('KERKO_ZOTERO_LIBRARY_ID')
     KERKO_ZOTERO_LIBRARY_TYPE = env.str('KERKO_ZOTERO_LIBRARY_TYPE')
+    KERKO_DATA_DIR = env.path('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko'))
 
     # Set other configuration variables.
     LOGGING_HANDLER = 'default'
@@ -46,7 +47,6 @@ class Config():
     KERKO_TEMPLATE_SEARCH = 'app/search.html.jinja2'
     KERKO_TEMPLATE_SEARCH_ITEM = 'app/search-item.html.jinja2'
     KERKO_TEMPLATE_ITEM = 'app/item.html.jinja2'
-    KERKO_DATA_DIR = str(app_dir / 'data' / 'kerko')
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,

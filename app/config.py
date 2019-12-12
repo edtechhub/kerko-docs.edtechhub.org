@@ -65,7 +65,7 @@ class Config():
         CollectionFacetSpec(
             key='facet_themes',
             filter_key='theme',
-            title=_('Themes'),
+            title=_('Theme'),
             weight=10,
             collection_key='23WS6R2T',
         )
@@ -77,10 +77,10 @@ class Config():
             key='facet_ours',
             title=_('Our publications') + ' <span class="fas fa-star" aria-hidden="true"></span>',
             filter_key='ours',
-            weight=15,
+            weight=1000,
             field_type=BOOLEAN,
             extractor=InCollectionExtractor('SGAGGGLK'),
-            codec=BooleanFacetCodec(false_value='', false_label=''),
+            codec=BooleanFacetCodec(true_label=_('Yes'), false_value='', false_label=''),
             missing_label=None,
             sort_key=['label'],
             sort_reverse=False,

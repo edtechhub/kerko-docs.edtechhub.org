@@ -230,8 +230,8 @@ The following procedure has to be performed only once.
    to the local Git repository, e.g.:
 
    ```bash
-   GIT_URL="ssh+git://{instance_id}@git.{datacenter_id}.gpaas.net"
-   git remote add gandi $GIT_URL/default.git
+   git remote add gandi ssh+git://{instance_id}@git.{datacenter_id}.gpaas.net/default.git
+   git push gandi master
    ```
 
    (Replace {instance_id} and {datacenter_id} with the appropriate values)
@@ -239,7 +239,7 @@ The following procedure has to be performed only once.
 5. Deploy to the instance, e.g.:
 
    ```bash
-   ssh $GIT_URL 'deploy default.git'
+   ssh {instance_id}@git.{datacenter_id}.gpaas.net 'deploy default.git'
    ```
 
 6. [Activate](https://docs.gandi.net/en/simple_hosting/connection/ssh.html) the
@@ -294,7 +294,7 @@ production.
 2. Deploy to the instance, e.g.:
 
    ```bash
-   ssh $GIT_URL 'deploy default.git'
+   ssh {instance_id}@git.{datacenter_id}.gpaas.net 'deploy default.git'
    ```
 
 3. If changes require the search index to be rebuilt, SSH to the instance and

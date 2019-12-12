@@ -24,7 +24,7 @@ class Config():
     KERKO_ZOTERO_API_KEY = env.str('KERKO_ZOTERO_API_KEY')
     KERKO_ZOTERO_LIBRARY_ID = env.str('KERKO_ZOTERO_LIBRARY_ID')
     KERKO_ZOTERO_LIBRARY_TYPE = env.str('KERKO_ZOTERO_LIBRARY_TYPE')
-    KERKO_DATA_DIR = env.path('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko'))
+    KERKO_DATA_DIR = env.str('KERKO_DATA_DIR', str(app_dir / 'data' / 'kerko'))
 
     # Set other configuration variables.
     LOGGING_HANDLER = 'default'

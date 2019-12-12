@@ -77,7 +77,7 @@ class Config():
             key='facet_ours',
             title=_('Our publications') + ' <span class="fas fa-star" aria-hidden="true"></span>',
             filter_key='ours',
-            weight=1000,
+            weight=1,
             field_type=BOOLEAN,
             extractor=InCollectionExtractor('SGAGGGLK'),
             codec=BooleanFacetCodec(true_label=_('Yes'), false_value='', false_label=''),

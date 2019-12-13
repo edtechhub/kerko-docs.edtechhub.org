@@ -71,7 +71,7 @@ class Config():
         )
     )
 
-    # Our publications facet and badge.f
+    # Our publications facet and badge.
     KERKO_COMPOSER.add_facet(
         FlatFacetSpec(
             key='facet_ours',

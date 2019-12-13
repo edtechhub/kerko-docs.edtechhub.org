@@ -185,7 +185,7 @@ flask kerko sync
 ### Building the assets
 
 If some front-end dependencies have been upgraded or if you have manually edited
-a Sass stylesheet (from ``static/src/app/scss/`), a rebuild of the assets is
+a Sass stylesheet (from `static/src/app/scss/`), a rebuild of the assets is
 required. From the application's directory (the one that contains `wsgi.py`),
 and with your virtual environment active:
 

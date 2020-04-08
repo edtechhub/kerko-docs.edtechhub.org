@@ -60,6 +60,41 @@ class Config():
         default_child_blacklist_re='',
     )
 
+    # Featured publisher facet and badge.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_featured',
+            title=_('Featured publisher'),
+            filter_key='featured',
+            weight=1,
+            collection_key='SGAGGGLK',  # FIXME: Replace with actual Featured publisher collection key.
+            sort_key=['label'],
+            missing_label=None,
+            sort_reverse=False,
+            item_view=False,
+            allow_overlap=True,
+        )
+    )
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='edtechhub',
+            field_type=BOOLEAN(stored=True),
+            extractor=InCollectionExtractor('SGAGGGLK'),  # FIXME: Replace with actual EdTech Hub collection key (subcollection of Featured publisher).
+        )
+    )
+    KERKO_COMPOSER.add_badge(
+        BadgeSpec(
+            key='edtechhub',
+            field=KERKO_COMPOSER.fields['edtechhub'],
+            activator=lambda field, item: bool(item.get(field.key)),
+            renderer=TemplateStringRenderer(
+                '<span class="fas fa-star" title="{title}"'
+                ' aria-hidden="true"></span>'.format(title=_('Published by The EdTech Hub'))
+            ),
+            weight=0,
+        )
+    )
+
     # Themes facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
@@ -68,44 +103,6 @@ class Config():
             title=_('Theme'),
             weight=10,
             collection_key='23WS6R2T',
-        )
-    )
-
-    # Our publications facet and badge.
-    KERKO_COMPOSER.add_facet(
-        FlatFacetSpec(
-            key='facet_ours',
-            title=_('Our publications') + ' <span class="fas fa-star" aria-hidden="true"></span>',
-            filter_key='ours',
-            weight=1,
-            field_type=BOOLEAN,
-            extractor=InCollectionExtractor('SGAGGGLK'),
-            codec=BooleanFacetCodec(true_label=_('Yes'), false_value='', false_label=''),
-            missing_label=None,
-            sort_key=['label'],
-            sort_reverse=False,
-            item_view=False,
-            allow_overlap=False,
-            query_class=Term,
-        )
-    )
-    KERKO_COMPOSER.add_field(
-        FieldSpec(
-            key='ours',
-            field_type=BOOLEAN(stored=True),
-            extractor=InCollectionExtractor('SGAGGGLK'),
-        )
-    )
-    KERKO_COMPOSER.add_badge(
-        BadgeSpec(
-            key='ours',
-            field=KERKO_COMPOSER.fields['ours'],
-            activator=lambda field, item: bool(item.get(field.key)),
-            renderer=TemplateStringRenderer(
-                '<span class="fas fa-star" title="{title}"'
-                ' aria-hidden="true"></span>'.format(title=_('Our publications'))
-            ),
-            weight=0,
         )
     )
 

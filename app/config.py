@@ -68,11 +68,6 @@ class Config():
             filter_key='featured',
             weight=1,
             collection_key='SGAGGGLK',  # FIXME: Replace with actual Featured publisher collection key.
-            sort_key=['label'],
-            missing_label=None,
-            sort_reverse=False,
-            item_view=False,
-            allow_overlap=True,
         )
     )
     KERKO_COMPOSER.add_field(

@@ -4,13 +4,11 @@ import pathlib
 from environs import Env
 from flask_babelex import gettext as _
 from whoosh.fields import BOOLEAN
-from whoosh.query import Term
 
-from kerko.codecs import BooleanFacetCodec
 from kerko.composer import Composer
 from kerko.extractors import InCollectionExtractor
 from kerko.renderers import TemplateStringRenderer
-from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec, FlatFacetSpec
+from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
 
 env = Env()  # pylint: disable=invalid-name
 env.read_env()

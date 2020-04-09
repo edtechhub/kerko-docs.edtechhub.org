@@ -65,14 +65,14 @@ class Config():
             title=_('Featured publisher'),
             filter_key='featured',
             weight=1,
-            collection_key='SGAGGGLK',  # FIXME: Replace with actual Featured publisher collection key.
+            collection_key='SGAGGGLK',
         )
     )
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='edtechhub',
             field_type=BOOLEAN(stored=True),
-            extractor=InCollectionExtractor('SGAGGGLK'),  # FIXME: Replace with actual EdTech Hub collection key (subcollection of Featured publisher).
+            extractor=InCollectionExtractor('BFS3UXT4'),
         )
     )
     KERKO_COMPOSER.add_badge(

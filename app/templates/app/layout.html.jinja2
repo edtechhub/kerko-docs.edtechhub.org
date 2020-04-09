@@ -4,6 +4,14 @@
     {%- if title %}{{ title|striptags|escape }} – {% endif %}{{ config.KERKO_TITLE|striptags|escape -}}
 {% endblock %}
 
+{%- block metas %}
+    {{- super() }}
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='dist/images/favicon-150.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='dist/images/favicon-300.png') }}" sizes="192x192">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='dist/images/favicon-300.png') }}">
+    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='dist/images/favicon-300.png') }}">
+{%- endblock metas %}
+
 {% block styles %}
     {%- assets "css_styles" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}">

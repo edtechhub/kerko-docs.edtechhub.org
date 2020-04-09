@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.whiskyechobravo.com:clients/edtechhub/edtechhublib"
+    "url": "git@github.com:edtechhub/eth-evidence-library-kerko.git"
   },
   "//": "Browserslist taken from static/src/vendor/bootstrap/.browserslistrc",
   "browserslist": [

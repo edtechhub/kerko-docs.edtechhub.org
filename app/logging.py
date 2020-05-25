@@ -1,9 +1,10 @@
 import logging
 from logging.config import dictConfig
 
+from flask.logging import default_handler
+
 # Set root logger to log to sys.stderr.
 # Note: this must be set before the Flask app gets created.
-# Ref: https://flask.palletsprojects.com/en/1.1.x/logging/#basic-configuration
 dictConfig(
     {
         'version': 1,
@@ -44,6 +45,9 @@ def init_app(app):
                 )
             )
         )
+        app.logger.addHandler(syslog_handler)
         root.addHandler(syslog_handler)
     if 'LOGGING_LEVEL' in app.config:
+        default_handler.setLevel(app.config['LOGGING_LEVEL'])
+        app.logger.setLevel(app.config['LOGGING_LEVEL'])
         root.setLevel(app.config['LOGGING_LEVEL'])

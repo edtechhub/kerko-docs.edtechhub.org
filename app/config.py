@@ -125,10 +125,7 @@ class ProductionConfig(Config):
     DEBUG = False
     ASSETS_DEBUG = env.bool('ASSETS_DEBUG', False)
     ASSETS_AUTO_BUILD = False
-    LOGGING_HANDLER = 'syslog'
-    LOGGING_ADDRESS = '/dev/log'
     LOGGING_LEVEL = logging.WARNING
-    LOGGING_FORMAT = '%(name)s %(asctime)s %(levelname)s: %(message)s'
     GOOGLE_ANALYTICS_ID = 'UA-149862882-2'
     LIBSASS_STYLE = 'compressed'
 

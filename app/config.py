@@ -119,6 +119,7 @@ class DevelopmentConfig(Config):
     KERKO_ZOTERO_START = env.int('KERKO_ZOTERO_START', 0)
     KERKO_ZOTERO_END = env.int('KERKO_ZOTERO_END', 0)
     LIBSASS_STYLE = 'expanded'
+    LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
 
 
 class ProductionConfig(Config):
@@ -126,7 +127,7 @@ class ProductionConfig(Config):
     DEBUG = False
     ASSETS_DEBUG = env.bool('ASSETS_DEBUG', False)
     ASSETS_AUTO_BUILD = False
-    LOGGING_LEVEL = logging.WARNING
+    LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'WARNING')
     GOOGLE_ANALYTICS_ID = 'UA-149862882-2'
     LIBSASS_STYLE = 'compressed'
 

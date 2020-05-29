@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/run.in
 #
-git+https://github.com/whiskyechobravo/kerko.git@05557809d1698a43f1594c63cf09bf158176ecb9#egg=kerko
+git+https://github.com/whiskyechobravo/kerko.git@1eddc7793c646b1a5e26262f900ef165012d4e81#egg=kerko
 git+https://github.com/miracle2k/webassets.git@e3e82114#egg=webassets
 babel==2.7.0
 bibtexparser==1.1.0       # via pyzotero

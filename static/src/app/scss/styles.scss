@@ -253,6 +253,9 @@ main {
 
 // Dropdown.
 
+.dropdown-item {
+  white-space: normal;  // Override Bootstrap's no-wrap default.
+}
 .dropdown-width-300 {
   width: 300px;
   max-width: 90vw;

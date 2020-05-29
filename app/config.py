@@ -50,6 +50,7 @@ class Config():
     KERKO_TEMPLATE_SEARCH = 'app/search.html.jinja2'
     KERKO_TEMPLATE_SEARCH_ITEM = 'app/search-item.html.jinja2'
     KERKO_TEMPLATE_ITEM = 'app/item.html.jinja2'
+    KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW = True
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,

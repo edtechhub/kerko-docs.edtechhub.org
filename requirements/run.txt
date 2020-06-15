@@ -4,38 +4,38 @@
 #
 #    pip-compile requirements/run.in
 #
-git+https://github.com/whiskyechobravo/kerko.git@1eddc7793c646b1a5e26262f900ef165012d4e81#egg=kerko
-git+https://github.com/miracle2k/webassets.git@e3e82114#egg=webassets
-babel==2.7.0
-bibtexparser==1.1.0       # via pyzotero
-bootstrap-flask==1.1.0
-certifi==2019.9.11        # via requests
+babel==2.8.0              # via -r requirements/run.in, flask-babelex, kerko
+bibtexparser==1.2.0       # via pyzotero
+bootstrap-flask==1.4      # via -r requirements/run.in, kerko
+certifi==2020.4.5.2       # via requests
 chardet==3.0.4            # via requests
-click==7.0                # via flask
-environs==6.1.0
+click==7.1.2              # via flask
+environs==8.0.0           # via -r requirements/run.in
 feedparser==5.2.1         # via pyzotero
-flask-assets==0.12
-flask-babelex==0.9.3
-flask-wtf==0.14.2
-flask==1.1.1
+flask-assets==2.0         # via -r requirements/run.in
+flask-babelex==0.9.4      # via -r requirements/run.in, kerko
+flask-wtf==0.14.3         # via kerko
+flask==1.1.2              # via -r requirements/run.in, bootstrap-flask, flask-assets, flask-babelex, flask-wtf, kerko
 future==0.18.2            # via bibtexparser
-idna==2.8                 # via requests
-itsdangerous==1.1.0       # via flask
-jinja2==2.10.3            # via flask, flask-babelex
-jsmin==2.2.2
-libsass==0.19.4
-markupsafe==1.1.1         # via jinja2
-marshmallow==3.2.2        # via environs
+idna==2.9                 # via requests
+itsdangerous==1.1.0       # via flask, flask-wtf
+jinja2==2.11.2            # via flask, flask-babelex, kerko
+jsmin==2.2.2              # via -r requirements/run.in
+git+https://github.com/whiskyechobravo/kerko.git@1064550a2c6a3a14e5bec455cd36519a33e2f8cd#egg=kerko  # via -r requirements/run.in
+libsass==0.20.0           # via -r requirements/run.in
+markupsafe==1.1.1         # via jinja2, wtforms
+marshmallow==3.6.1        # via environs
 pathlib==1.0.1            # via pyzotero
-pyparsing==2.4.5          # via bibtexparser
-python-dotenv==0.10.3
-pytz==2019.3              # via babel, pyzotero
-pyzotero==1.4.10
-requests==2.22.0          # via pyzotero
-six==1.13.0               # via libsass
+pyparsing==2.4.7          # via bibtexparser
+python-dotenv==0.13.0     # via -r requirements/run.in, environs
+pytz==2020.1              # via babel, pyzotero
+pyzotero==1.4.16          # via kerko
+requests==2.23.0          # via pyzotero
+six==1.15.0               # via libsass
 speaklater==1.3           # via flask-babelex
-urllib3==1.25.7           # via requests
-werkzeug==0.16.0          # via flask
-whoosh==2.7.4
-wrapt==1.11.2
-wtforms==2.2.1            # via flask-wtf
+urllib3==1.25.9           # via requests
+webassets==2.0            # via -r requirements/run.in, flask-assets
+werkzeug==1.0.1           # via flask, kerko
+whoosh==2.7.4             # via kerko
+wrapt==1.12.1             # via kerko
+wtforms==2.3.1            # via flask-wtf, kerko

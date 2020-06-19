@@ -16,7 +16,7 @@
     {%- assets "css_styles" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}">
     {%- endassets %}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:400,700&display=swap&subset=latin-ext">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i,800,800i&display=swap&subset=latin-ext">
 {% endblock styles %}
 
 {% block navbar %}
@@ -29,17 +29,31 @@
                 </div>
             {%- endblock navbar_brand %}
             {%- block navbar_toggler %}
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-text">{{ _('Menu') }}</span>
-                </button>
+                <div class="d-lg-none m-auto">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-text">{{ _('Menu') }}</span>
+                    </button>
+                </div>
             {%- endblock navbar_toggler %}
             {%- block navbar_content %}
                 <div id="navbar-content" class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto justify-content-end">
+                    <ul class="navbar-nav justify-content-end">
                         {%- block navbar_items %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ config.HOME_URL }}">{{ _('Home') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ config.ABOUT_URL }}">{{ _('About us') }}</a>
+                            </li>
                             <li class="nav-item {% if request.endpoint == 'kerko.search' %}active{% endif %}">
                                 <a class="nav-link" href="{{ url_for('kerko.search') }}">{{ config.NAV_TITLE }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ config.BLOG_URL }}">{{ _('Blog') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ config.CONTACT_URL }}">{{ _('Join us') }}</a>
                             </li>
                         {%- endblock navbar_items %}
                     </ul>

@@ -6,7 +6,7 @@
 
 $white: #fff;
 $black: #1b1f22;
-$salmon: #f47452;  // Custom variable.
+$salmon: #e17714;  // Custom variable.
 
 $theme-colors:
 (
@@ -15,13 +15,27 @@ $theme-colors:
 
 $primary: $salmon;
 
+$grid-breakpoints: (
+  // Remove Bootstrap's xs.
+  sm: 0,
+  md: 768px,
+  lg: 960px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  // Remove Bootstrap's sm, md & lg.
+  xl: 1184px
+);
+
+$grid-gutter-width: 4rem;
+
 $border-color: #efefef;
 $border-radius: 0;
 
-$font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-$font-family-oswald: 'Oswald', "Helvetica Neue", helvetica, arial, sans-serif;  // Custom variable.
+$font-family-sans-serif: 'Open Sans', "Helvetica Neue", helvetica, arial, sans-serif;
 $font-size-base: 1rem;
-$headings-font-family: $font-family-oswald;
+$headings-font-family: $font-family-sans-serif;
 $headings-font-weight: 700;
 
 $h1-font-size: $font-size-base * 2.125;
@@ -31,15 +45,18 @@ $h4-font-size: $font-size-base * 1.25;
 $h5-font-size: $font-size-base * 1.1;
 $h6-font-size: $font-size-base;
 
-$nav-link-font-family: $font-family-oswald;  // Custom variable.
+$nav-link-padding-x: .9rem;  // Make sure links fit on thr same line on most screens.
+$nav-link-padding-y: 1rem;
+$nav-link-font-family: $font-family-sans-serif;  // Custom variable.
 $nav-link-font-size: $font-size-base * 1.125;  // Custom variable.
 $nav-link-font-weight: 400;  // Custom variable.
-$navbar-padding-y: 1rem;
-$navbar-brand-padding-y: .2em;
+$navbar-padding-x: 2rem;
+$navbar-padding-y: 20px;
+$navbar-brand-padding-y: 0;
 $navbar-brand-font-size: 1.875rem;
 $navbar-toggler-padding-y: .5rem;
-$navbar-light-color: $black;
-$navbar-light-active-color: $black;
+$navbar-light-color: #1b1f22;
+$navbar-light-active-color: #1b1f22;
 $navbar-light-hover-color: rgba(0,0,0,.7);
 $navbar-light-toggler-border-color: $border-color;
 
@@ -105,14 +122,6 @@ $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 
 // General.
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-  text-transform: uppercase;
-}
 .list-no-bullets {
   list-style-type: none;
 }
@@ -167,13 +176,30 @@ main {
 // Navbar.
 
 .navbar {
+  padding-left: 0;
+  padding-right: 0;
   border-bottom: $border-width solid $border-color;
+  text-align: center;
+  @include media-breakpoint-up(lg) {
+  }
 }
 .navbar-brand {
+  width: 100%;
+  padding-bottom: $navbar-padding-y;
+  border-bottom: $border-width solid $border-color;
+  margin-right: 0;
   white-space: normal;
+  @include media-breakpoint-up(lg) {
+    width: auto;
+    padding-bottom: 0;
+    border-bottom: 0;
+    margin-right: $navbar-padding-x;
+    text-align: left;
+  }
 }
 .navbar-toggler {
   display: block;
+  margin-top: $navbar-padding-y;
   font-family: $nav-link-font-family;
   font-size: $nav-link-font-size;
   font-weight: $nav-link-font-weight;
@@ -184,28 +210,54 @@ main {
   font-size: $font-size-base * .75;
   vertical-align: top;
 }
+.navbar-nav {
+  padding-top: $navbar-padding-y;
+  padding-bottom: $navbar-padding-y;
+  margin-top: $navbar-padding-y;
+  margin-left: 0;
+  margin-right: 0;
+  background: #fbfbfb;
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+    margin-top: 0;
+    margin-left: auto !important;
+    margin-right: -$nav-link-padding-x;
+    background: transparent;
+  }
+}
 .nav-item {
-  padding-top: $nav-link-padding-y;
-  padding-bottom: $nav-link-padding-y;
+  padding: 0 $navbar-padding-x;
   font-family: $nav-link-font-family;
   font-size: $nav-link-font-size;
   font-weight: $nav-link-font-weight;
   text-transform: uppercase;
   letter-spacing: .05em;
+  @include media-breakpoint-up(lg) {
+    padding: $nav-link-padding-y 0;
+    margin-left: $nav-link-padding-x;
+    margin-right: $nav-link-padding-x;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 .nav-link {
-  padding: 0 !important;
+  padding: 10px 0 !important;
   border-bottom: 3px solid transparent;
-  margin-top: $nav-link-padding-y;
+  margin-top: 3px;
+  text-align: left;
+  white-space: nowrap;
   @include media-breakpoint-up(lg) {
+    padding: 0 !important;
     margin-top: 0;
     display: inline-block;
   }
-  @include hover {
+  .nav-item.active & {
     border-bottom-color: $primary;
-    .nav-item.active & {
-      color: $navbar-light-hover-color;
-    }
+  }
+  @include hover-focus {
+    color: $navbar-light-hover-color !important;
+    border-bottom-color: $primary;
   }
 }
 .brand-title {
@@ -214,10 +266,11 @@ main {
   @include media-breakpoint-up(lg) {
     font-size: $navbar-brand-font-size;
   }
-  font-weight: $headings-font-weight;
+  font-weight: 800;
   line-height: 1.5;
   text-transform: uppercase;
   letter-spacing: .08em;
+  white-space: nowrap;
   color: $black;
   @include hover() {
     color: $black;
@@ -229,12 +282,6 @@ main {
   font-size: $font-size-base;
   color: $primary;
   letter-spacing: .05em;
-}
-
-// Buttons.
-
-.btn-primary {
-  color: $white;
 }
 
 // Badge.

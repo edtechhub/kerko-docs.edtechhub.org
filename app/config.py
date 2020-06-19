@@ -40,6 +40,10 @@ class Config():
     HOME_URL = 'https://edtechhub.org/'
     HOME_TITLE = _("The EdTech Hub")
     HOME_SUBTITLE = _("Research and Innovation to fulfil the potential of EdTech")
+    ABOUT_URL = 'https://edtechhub.org/about-the-edtech-hub/'
+    BLOG_URL = 'https://edtechhub.org/blog/'
+    CONTACT_URL = 'https://edtechhub.org/jobs/'
+
     NAV_TITLE = _("Evidence Library")
     KERKO_TITLE = _("Evidence Library – The EdTech Hub")
     KERKO_CSL_STYLE = 'apa'

@@ -46,8 +46,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ config.ABOUT_URL }}">{{ _('About us') }}</a>
                             </li>
-                            <li class="nav-item {% if request.endpoint == 'kerko.search' %}active{% endif %}">
-                                <a class="nav-link" href="{{ url_for('kerko.search') }}">{{ config.NAV_TITLE }}</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('kerko.search') }}" aria-current="true">{{ config.NAV_TITLE }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ config.BLOG_URL }}">{{ _('Blog') }}</a>

@@ -93,6 +93,17 @@ class Config():
         )
     )
 
+    # Location facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_location',
+            filter_key='location',
+            title=_('Location'),
+            weight=10,
+            collection_key='PFCKJVIL',
+        )
+    )
+
     # Themes facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(

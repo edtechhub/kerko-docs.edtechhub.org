@@ -58,7 +58,7 @@ class Config():
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
-        exclude_default_facets=['facet_tag', 'facet_link'],
+        exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type'],
         default_child_whitelist_re='^publishPDF$',
         default_child_blacklist_re='',
     )
@@ -69,7 +69,7 @@ class Config():
             key='facet_featured',
             title=_('Featured publisher'),
             filter_key='featured',
-            weight=1,
+            weight=10,
             collection_key='SGAGGGLK',
         )
     )
@@ -93,14 +93,25 @@ class Config():
         )
     )
 
-    # Location facet.
+    # Publication type facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
-            key='facet_location',
-            filter_key='location',
-            title=_('Location'),
-            weight=10,
-            collection_key='PFCKJVIL',
+            key='facet_pubtype',
+            filter_key='pubtype',
+            title=_('Publication type'),
+            weight=20,
+            collection_key='WIWEWXZ8',
+        )
+    )
+
+    # Audience facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_audience',
+            filter_key='audience',
+            title=_('Audience'),
+            weight=30,
+            collection_key='WJZFJQ5D',
         )
     )
 
@@ -110,18 +121,30 @@ class Config():
             key='facet_themes',
             filter_key='theme',
             title=_('Theme'),
-            weight=10,
+            weight=40,
             collection_key='23WS6R2T',
         )
     )
 
+    # Location facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_location',
+            filter_key='location',
+            title=_('Location'),
+            weight=50,
+            collection_key='PFCKJVIL',
+        )
+    )
+
     # References facet.
+    # TODO: remove this facet when ready.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_references',
             filter_key='ref',
             title=_('References'),
-            weight=20,
+            weight=25,
             collection_key='GQH9J3MJ',
         )
     )

@@ -125,16 +125,16 @@ class Config():
         )
     )
 
-    # TODO: Location facet.
-    # KERKO_COMPOSER.add_facet(
-    #     CollectionFacetSpec(
-    #         key='facet_location',
-    #         filter_key='location',
-    #         title=_('Location'),
-    #         weight=50,
-    #         collection_key='PFCKJVIL',
-    #     )
-    # )
+    # Location facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_location',
+            filter_key='location',
+            title=_('Location'),
+            weight=50,
+            collection_key='PFCKJVIL',
+        )
+    )
 
     # References facet.
     # TODO: remove this facet when ready.

@@ -136,14 +136,13 @@ class Config():
         )
     )
 
-    # References facet.
-    # TODO: remove this facet when ready.
+    # Other facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_references',
             filter_key='ref',
-            title=_('References'),
-            weight=25,
+            title=_('Other'),
+            weight=60,
             collection_key='GQH9J3MJ',
         )
     )

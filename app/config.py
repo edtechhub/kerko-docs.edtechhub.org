@@ -76,7 +76,7 @@ class Config():
         FieldSpec(
             key='edtechhub',
             field_type=BOOLEAN(stored=True),
-            extractor=InCollectionExtractor('BFS3UXT4'),
+            extractor=InCollectionExtractor(collection_key='BFS3UXT4'),
         )
     )
     KERKO_COMPOSER.add_badge(

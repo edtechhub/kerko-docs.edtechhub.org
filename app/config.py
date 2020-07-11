@@ -3,13 +3,15 @@ import re
 
 from environs import Env
 from flask_babelex import gettext as _
-from whoosh.fields import BOOLEAN, ID
+from whoosh.fields import BOOLEAN, ID, STORED
 
+from kerko import codecs, extractors
 from kerko.composer import Composer
-from kerko.extractors import InCollectionExtractor, ItemDataExtractor, TransformerExtractor
 from kerko.renderers import TemplateStringRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
 from kerko.transformers import make_regex_find_transformer, make_split_transformer
+
+from .transformers import extra_field_cleaner
 
 env = Env()  # pylint: disable=invalid-name
 env.read_env()
@@ -60,16 +62,31 @@ class Config():
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
         exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type'],
+        exclude_default_fields=['data'],
         default_child_whitelist_re='^(_publish|publishPDF)$',
         default_child_blacklist_re='',
     )
 
+    # Replace the default 'data' extractor to strip unwanted data from the Extra field.
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='data',
+            field_type=STORED,
+            extractor=extractors.TransformerExtractor(
+                extractor=extractors.RawDataExtractor(),
+                transformers=[extra_field_cleaner]
+            ),
+            codec=codecs.JSONFieldCodec()
+        )
+    )
+
+    # Alternate ID, for the `kerko.item_redirect` view.
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='alternateId',
             field_type=ID,
-            extractor=TransformerExtractor(
-                extractor=ItemDataExtractor(key='extra'),
+            extractor=extractors.TransformerExtractor(
+                extractor=extractors.ItemDataExtractor(key='extra'),
                 transformers=[
                     make_regex_find_transformer(
                         regex=r'^\s*EdTechHub.ItemAlsoKnownAs\s*:\s*(.*)$',
@@ -96,7 +113,7 @@ class Config():
         FieldSpec(
             key='edtechhub',
             field_type=BOOLEAN(stored=True),
-            extractor=InCollectionExtractor(collection_key='BFS3UXT4'),
+            extractor=extractors.InCollectionExtractor(collection_key='BFS3UXT4'),
         )
     )
     KERKO_COMPOSER.add_badge(

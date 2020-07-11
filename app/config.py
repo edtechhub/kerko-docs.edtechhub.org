@@ -1,13 +1,15 @@
 import pathlib
+import re
 
 from environs import Env
 from flask_babelex import gettext as _
-from whoosh.fields import BOOLEAN
+from whoosh.fields import BOOLEAN, ID
 
 from kerko.composer import Composer
-from kerko.extractors import InCollectionExtractor
+from kerko.extractors import InCollectionExtractor, ItemDataExtractor, TransformerExtractor
 from kerko.renderers import TemplateStringRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
+from kerko.transformers import make_regex_find_transformer, make_split_transformer
 
 env = Env()  # pylint: disable=invalid-name
 env.read_env()
@@ -60,6 +62,24 @@ class Config():
         exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type'],
         default_child_whitelist_re='^(_publish|publishPDF)$',
         default_child_blacklist_re='',
+    )
+
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='alternateId',
+            field_type=ID,
+            extractor=TransformerExtractor(
+                extractor=ItemDataExtractor(key='extra'),
+                transformers=[
+                    make_regex_find_transformer(
+                        regex=r'^\s*EdTechHub.ItemAlsoKnownAs\s*:\s*(.*)$',
+                        flags=re.IGNORECASE | re.MULTILINE,
+                        max_matches=1,
+                    ),
+                    make_split_transformer(sep=';'),
+                ]
+            )
+        )
     )
 
     # Featured publisher facet and badge.

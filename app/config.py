@@ -3,13 +3,12 @@ import re
 
 from environs import Env
 from flask_babelex import gettext as _
-from whoosh.fields import BOOLEAN, ID, STORED
+from whoosh.fields import BOOLEAN, STORED
 
-from kerko import codecs, extractors
+from kerko import codecs, extractors, transformers
 from kerko.composer import Composer
 from kerko.renderers import TemplateStringRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
-from kerko.transformers import make_regex_find_transformer, make_split_transformer
 
 from .transformers import extra_field_cleaner
 
@@ -80,22 +79,18 @@ class Config():
         )
     )
 
-    # Alternate ID, for the `kerko.item_redirect` view.
-    KERKO_COMPOSER.add_field(
-        FieldSpec(
-            key='alternateId',
-            field_type=ID,
-            extractor=extractors.TransformerExtractor(
-                extractor=extractors.ItemDataExtractor(key='extra'),
-                transformers=[
-                    make_regex_find_transformer(
-                        regex=r'^\s*EdTechHub.ItemAlsoKnownAs\s*:\s*(.*)$',
-                        flags=re.IGNORECASE | re.MULTILINE,
-                        max_matches=1,
-                    ),
-                    make_split_transformer(sep=';'),
-                ]
-            )
+    # Add extractors for the 'alternateId' field.
+    KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        extractors.TransformerExtractor(
+            extractor=extractors.ItemDataExtractor(key='extra'),
+            transformers=[
+                transformers.find(
+                    regex=r'^\s*EdTechHub.ItemAlsoKnownAs\s*:\s*(.*)$',
+                    flags=re.IGNORECASE | re.MULTILINE,
+                    max_matches=1,
+                ),
+                transformers.split(sep=';'),
+            ]
         )
     )
 

@@ -27,6 +27,7 @@ common_js = Bundle(  # pylint: disable=invalid-name
     'src/vendor/bootstrap/button.js',
     'src/vendor/bootstrap/dropdown.js',
     'src/vendor/bootstrap/modal.js',
+    'src/vendor/bootstrap/tab.js',
     filters='jsmin',
     output='dist/js/common.min.js',
 )

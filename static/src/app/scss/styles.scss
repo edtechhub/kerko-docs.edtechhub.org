@@ -144,6 +144,18 @@ $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 .w-40 {
   min-width: 40% !important;
 }
+.more-or-less[aria-expanded="true"] span.more {
+  display: none;
+}
+.more-or-less[aria-expanded="false"] span.more {
+  display: inline;
+}
+.more-or-less[aria-expanded="true"] span.less {
+  display: inline;
+}
+.more-or-less[aria-expanded="false"] span.less {
+  display: none;
+}
 
 // Layout.
 
@@ -181,7 +193,40 @@ main {
   padding-right: 0;
   border-bottom: $border-width solid $border-color;
   text-align: center;
-  @include media-breakpoint-up(lg) {
+  .nav-item {
+    padding: 0 $navbar-padding-x;
+    font-family: $nav-link-font-family;
+    font-size: $nav-link-font-size;
+    font-weight: $nav-link-font-weight;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    @include media-breakpoint-up(lg) {
+      padding: $nav-link-padding-y 0;
+      margin-left: $nav-link-padding-x;
+      margin-right: $nav-link-padding-x;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .nav-link {
+    padding: 10px 0 !important;
+    border-bottom: 3px solid transparent;
+    margin-top: 3px;
+    text-align: left;
+    white-space: nowrap;
+    @include media-breakpoint-up(lg) {
+      padding: 0 !important;
+      margin-top: 0;
+      display: inline-block;
+    }
+    @include hover-focus {
+      color: $navbar-light-hover-color !important;
+      border-bottom-color: $primary;
+    }
+  }
+  .nav-item.active .nav-link {
+    border-bottom-color: $primary;
   }
 }
 .navbar-brand {
@@ -224,41 +269,6 @@ main {
     margin-left: auto !important;
     margin-right: -$nav-link-padding-x;
     background: transparent;
-  }
-}
-.nav-item {
-  padding: 0 $navbar-padding-x;
-  font-family: $nav-link-font-family;
-  font-size: $nav-link-font-size;
-  font-weight: $nav-link-font-weight;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  @include media-breakpoint-up(lg) {
-    padding: $nav-link-padding-y 0;
-    margin-left: $nav-link-padding-x;
-    margin-right: $nav-link-padding-x;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-}
-.nav-link {
-  padding: 10px 0 !important;
-  border-bottom: 3px solid transparent;
-  margin-top: 3px;
-  text-align: left;
-  white-space: nowrap;
-  @include media-breakpoint-up(lg) {
-    padding: 0 !important;
-    margin-top: 0;
-    display: inline-block;
-  }
-  .nav-item.active & {
-    border-bottom-color: $primary;
-  }
-  @include hover-focus {
-    color: $navbar-light-hover-color !important;
-    border-bottom-color: $primary;
   }
 }
 .brand-title {
@@ -360,5 +370,9 @@ main {
   .item-content a {
     color: $black;
     text-decoration: none;
+  }
+  .tab-content > .tab-pane {
+    display: block;
+    opacity: 1;
   }
 }

@@ -24,8 +24,9 @@
         <div class="container">
             {%- block navbar_brand %}
                 <div class="navbar-brand">
-                    <a class="d-block brand-title" href="{{ config.HOME_URL }}">{{ config.HOME_TITLE }}</a>
-                    <span class="d-block brand-subtitle text-primary">{{ config.HOME_SUBTITLE }}</span>
+                    <a class="d-block brand-title" href="{{ config.HOME_URL }}">
+                        <img class="custom-logo" width="250" title="{{ config.HOME_TITLE }}" src="{{ url_for('static', filename='dist/images/logo.png') }}" scale="2"/>
+                    </a>
                 </div>
             {%- endblock navbar_brand %}
             {%- block navbar_toggler %}

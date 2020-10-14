@@ -16,8 +16,6 @@
     {%- assets "css_styles" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}">
     {%- endassets %}
-    <link property="stylesheet" rel='stylesheet' id='tp-fontello-css'  href='https://edtechhub.org/wp-content/plugins/essential-grid/public/assets/font/fontello/css/fontello.css?ver=3.0.7' type='text/css' media='all' />
-    <link property="stylesheet" rel='stylesheet' id='ekoterra-icons-css'  href='https://edtechhub.org/wp-content/themes/edtechhub/css/font-icons/css/fontello-embedded.css' type='text/css' media='all' />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 {% endblock styles %}
 
@@ -46,26 +44,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ config.HOME_URL }}">{{ _('Home') }}</a>
                             </li>
-                            <li class="nav-item menu-item-has-children">
-                                <a class="nav-link" href="#">{{ _('About us') }}</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="{{ config.ABOUT_URL }}"><span>{{ _('About EdTech Hub') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_TEAM_URL }}"><span>{{ _('Team') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_ADVISORS_URL }}"><span>{{ _('Advisors') }}</span></a></li>
-                                </ul>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('kerko.search') }}" aria-current="true">{{ config.NAV_TITLE }}</a>
                             </li>
-                            <li class="nav-item menu-item-has-children active">
-                                <a class="nav-link" href="#">{{ _('Tools') }}</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item active"><a href="{{ url_for('kerko.search') }}"><span>{{ _('EVIDENCE LIBRARY') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.TOOLS_DATABASE_URL }}" target="_blank"><span>{{ _('EDTECH TOOLS DATABASE') }}</span></a></li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ config.ABOUT_URL }}">{{ _('About us') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ config.BLOG_URL }}">{{ _('Blog') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ config.CONTACT_URL }}">{{ _('Contact us') }}</a>
+                                <a class="nav-link" href="{{ config.CONTACT_URL }}">{{ _('Join us') }}</a>
                             </li>
                         {%- endblock navbar_items %}
                     </ul>

@@ -48,16 +48,17 @@ $h6-font-size: $font-size-base;
 $nav-link-padding-x: .9rem;  // Make sure links fit on the same line on most screens.
 $nav-link-padding-y: 1rem;
 $nav-link-font-family: $font-family-sans-serif;  // Custom variable.
-$nav-link-font-size: $font-size-base * 1.125;  // Custom variable.
+$nav-link-font-size: $font-size-base;  // Custom variable.
+$nav-child-link-font-size: $nav-link-font-size - .1rem;
 $nav-link-font-weight: 400;  // Custom variable.
 $navbar-padding-x: 2rem;
 $navbar-padding-y: 20px;
 $navbar-brand-padding-y: 0;
 $navbar-brand-font-size: 1.875rem;
 $navbar-toggler-padding-y: .5rem;
-$navbar-light-color: #1f1e2c;
+$navbar-light-color: #777777;
 $navbar-light-active-color: #1f1e2c;
-$navbar-light-hover-color: rgba(0,0,0,.7);
+$navbar-light-hover-color: #1f1e2c;
 $navbar-light-toggler-border-color: $border-color;
 
 $card-border-color: $border-color;
@@ -222,13 +223,53 @@ main {
     }
     @include hover-focus {
       color: $navbar-light-hover-color !important;
-      border-bottom-color: $primary;
     }
   }
-  .nav-item.active .nav-link {
-    border-bottom-color: $primary;
+}
+
+.menu-item-has-children a.nav-link:after {
+  content: ' \e828 ';
+  font-family: "fontello";
+}
+
+ul.navbar-nav li ul.sub-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  text-align: justify;
+  display: none;
+  background: $black;
+  padding: 15px;
+  z-index: 1;
+  a {
+    text-decoration: none;
+    color: $white;
+    :hover {
+      color: $primary;
+    }
+  }
+  li.active a {
+    color:$primary;
   }
 }
+
+ul.navbar-nav li:hover > ul,
+ul.navbar-nav li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul.navbar-nav li ul li {
+  font-size: $nav-child-link-font-size;
+  list-style: none;
+  clear: both;
+  width: 100%;
+  padding: 5px;
+}
+
 .navbar-brand {
   width: 100%;
   padding-bottom: $navbar-padding-y;

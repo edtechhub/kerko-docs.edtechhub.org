@@ -191,7 +191,7 @@ class Config():
         CollectionFacetSpec(
             key='facet_country',
             filter_key='country',
-            title=_('Country'),
+            title=_('Geography'),
             weight=90,
             collection_key='4UP8CZQE',
         )

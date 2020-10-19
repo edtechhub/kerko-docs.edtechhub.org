@@ -64,7 +64,7 @@ class Config():
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
-        exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type'],
+        exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type', 'facet_year'],
         exclude_default_fields=['data'],
         default_child_include_re='^(_publish|publishPDF)$',
         default_child_exclude_re='',
@@ -98,13 +98,134 @@ class Config():
         )
     )
 
+    # Learners type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_learners',
+            filter_key='learners',
+            title=_('Learners'),
+            weight=10,
+            collection_key='WZXRTV9N',
+        )
+    )
+
+    # Educators type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_educators',
+            filter_key='educators',
+            title=_('Educators'),
+            weight=20,
+            collection_key='MS38G6YW',
+        )
+    )
+
+    # Education systems type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_education_systems',
+            filter_key='education_systems',
+            title=_('Education systems'),
+            weight=30,
+            collection_key='ZN4PI2Z6',
+        )
+    )
+
+    # Cost effectiveness type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_cost_effectiveness',
+            filter_key='cost_effectiveness',
+            title=_('Cost effectiveness'),
+            weight=40,
+            collection_key='SCMAR3ZW',
+        )
+    )
+
+    # Hardware and modality type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_hardware_and_modality',
+            filter_key='hardware_and_modality',
+            title=_('Hardware and modality'),
+            weight=50,
+            collection_key='CE7P7GJX',
+        )
+    )
+
+    # Educational level type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_educational_level',
+            filter_key='educational_level',
+            title=_('Educational level'),
+            weight=60,
+            collection_key='B2CQYHX8',
+        )
+    )
+
+    # Within-country contexts type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_within_country_contexts',
+            filter_key='within_country_contexts',
+            title=_('Within-country contexts'),
+            weight=70,
+            collection_key='KY3HHD5I',
+        )
+    )
+
+    # Language of publication type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_language_of_publication',
+            filter_key='language_of_publication',
+            title=_('Language of publication'),
+            weight=80,
+            collection_key='5WYC9ALL',
+        )
+    )
+
+    # Country type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_country',
+            filter_key='country',
+            title=_('Country'),
+            weight=90,
+            collection_key='4UP8CZQE',
+        )
+    )
+
+    # Research method type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_research_method',
+            filter_key='research_method',
+            title=_('Research method'),
+            weight=110,
+            collection_key='P4WEVZLQ',
+        )
+    )
+
+    # COVID and reopening of schools type facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_covid_and_reopening_of_schools',
+            filter_key='covid_and_reopening_of_schools',
+            title=_('COVID and reopening of schools'),
+            weight=120,
+            collection_key='TIYLRP8N',
+        )
+    )
+
     # Featured publisher facet and badge.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_featured',
             title=_('Featured publisher'),
             filter_key='featured',
-            weight=10,
+            weight=100,
             collection_key='SGAGGGLK',
         )
     )
@@ -124,64 +245,10 @@ class Config():
                 '<span class="fas fa-star" title="{title}"'
                 ' aria-hidden="true"></span>'.format(title=_('Published by The EdTech Hub'))
             ),
-            weight=0,
+            weight=100,
         )
     )
 
-    # Publication type facet.
-    KERKO_COMPOSER.add_facet(
-        CollectionFacetSpec(
-            key='facet_pubtype',
-            filter_key='pubtype',
-            title=_('Publication type'),
-            weight=20,
-            collection_key='WIWEWXZ8',
-        )
-    )
-
-    # TODO: Audience facet.
-    # KERKO_COMPOSER.add_facet(
-    #     CollectionFacetSpec(
-    #         key='facet_audience',
-    #         filter_key='audience',
-    #         title=_('Audience'),
-    #         weight=30,
-    #         collection_key='WJZFJQ5D',
-    #     )
-    # )
-
-    # Themes facet.
-    KERKO_COMPOSER.add_facet(
-        CollectionFacetSpec(
-            key='facet_themes',
-            filter_key='theme',
-            title=_('Theme'),
-            weight=40,
-            collection_key='23WS6R2T',
-        )
-    )
-
-    # Location facet.
-    KERKO_COMPOSER.add_facet(
-        CollectionFacetSpec(
-            key='facet_location',
-            filter_key='location',
-            title=_('Location'),
-            weight=50,
-            collection_key='PFCKJVIL',
-        )
-    )
-
-    # TODO: Remove this code when certain the facet is no longer wanted.
-    # KERKO_COMPOSER.add_facet(
-    #     CollectionFacetSpec(
-    #         key='facet_references',
-    #         filter_key='ref',
-    #         title=_('Other'),
-    #         weight=60,
-    #         collection_key='GQH9J3MJ',
-    #     )
-    # )
 
 
 class DevelopmentConfig(Config):

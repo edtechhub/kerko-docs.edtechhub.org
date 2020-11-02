@@ -97,6 +97,18 @@ class Config():
             ]
         )
     )
+    KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        extractors.TransformerExtractor(
+            extractor=extractors.ItemDataExtractor(key='extra'),
+            transformers=[
+                transformers.find(
+                    regex=r'^\s*shortDOI\s*:\s*(\S+)\s*$',
+                    flags=re.IGNORECASE | re.MULTILINE,
+                    max_matches=0,
+                ),
+            ]
+        )
+    )
 
     # Learners type facet.
     KERKO_COMPOSER.add_facet(

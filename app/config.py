@@ -93,7 +93,7 @@ class Config():
                     flags=re.IGNORECASE | re.MULTILINE,
                     max_matches=1,
                 ),
-                transformers.split(sep=';'),
+                transformers.split(sep='; '),
             ]
         )
     )

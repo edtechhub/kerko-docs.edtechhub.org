@@ -102,6 +102,19 @@ class Config():
             extractor=extractors.ItemDataExtractor(key='extra'),
             transformers=[
                 transformers.find(
+                    regex=r'^\s*KerkoCite.ItemAlsoKnownAs\s*:\s*(.*)$',
+                    flags=re.IGNORECASE | re.MULTILINE,
+                    max_matches=1,
+                ),
+                transformers.split(sep=' '),
+            ]
+        )
+    )
+    KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        extractors.TransformerExtractor(
+            extractor=extractors.ItemDataExtractor(key='extra'),
+            transformers=[
+                transformers.find(
                     regex=r'^\s*shortDOI\s*:\s*(\S+)\s*$',
                     flags=re.IGNORECASE | re.MULTILINE,
                     max_matches=0,

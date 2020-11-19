@@ -54,11 +54,16 @@
                                     <li class="menu-item"><a href="{{ config.ABOUT_ADVISORS_URL }}"><span>{{ _('Advisors') }}</span></a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item menu-item-has-children active">
+                            <li class="nav-item menu-item-has-children">
                                 <a class="nav-link" href="#">{{ _('Tools') }}</a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item active"><a href="{{ url_for('kerko.search') }}"><span>{{ _('EVIDENCE LIBRARY') }}</span></a></li>
                                     <li class="menu-item"><a href="{{ config.TOOLS_DATABASE_URL }}" target="_blank"><span>{{ _('EDTECH TOOLS DATABASE') }}</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item menu-item-has-children active">
+                                <a class="nav-link" href="#">{{ _('Evidence') }}</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item active"><a href="{{ url_for('kerko.search') }}"><span>{{ _('EVIDENCE LIBRARY') }}</span></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">

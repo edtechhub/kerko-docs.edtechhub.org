@@ -2,7 +2,7 @@ import pathlib
 import re
 
 from environs import Env
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 from whoosh.fields import BOOLEAN, STORED
 
 from kerko import codecs, extractors, transformers

@@ -3,7 +3,7 @@ An application inspired by KerkoApp.
 """
 
 from flask import current_app, Flask, g, redirect, request, render_template
-from flask_babelex import get_locale
+from flask_babel import get_locale
 
 from kerko import blueprint as kerko_blueprint
 

@@ -35,7 +35,7 @@ class Config():
         str(pathlib.Path(__file__).parent.parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
     ]
 
-    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_LOCALE = 'en_GB'
     KERKO_WHOOSH_LANGUAGE = 'en'
     KERKO_ZOTERO_LOCALE = 'en-GB'
 

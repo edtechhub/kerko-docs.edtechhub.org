@@ -169,7 +169,7 @@ msgstr[1] ""
 
 #: src/kerko/templates/kerko/search-item.html.jinja2:15 src/kerko/views.py:129
 msgid "Full bibliography"
-msgstr "Full library"
+msgstr "Full Library"
 
 #: src/kerko/views.py:131
 msgid "Your search did not match any resources"

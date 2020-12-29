@@ -2,7 +2,7 @@ import pathlib
 import re
 
 from environs import Env
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 from whoosh.fields import BOOLEAN, STORED
 
 from kerko import codecs, extractors, transformers
@@ -35,7 +35,7 @@ class Config():
         str(pathlib.Path(__file__).parent.parent / 'static' / 'src' / 'vendor' / '@fortawesome' / 'fontawesome-free' / 'scss'),
     ]
 
-    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_LOCALE = 'en_GB'
     KERKO_WHOOSH_LANGUAGE = 'en'
     KERKO_ZOTERO_LOCALE = 'en-GB'
 

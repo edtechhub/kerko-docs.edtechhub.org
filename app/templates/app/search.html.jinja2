@@ -25,3 +25,11 @@
 {% block results_heading_classes %}heading-results d-inline-block mt-3 mb-2{% endblock %}
 
 {% block sorter_wrapper_classes scoped %}col-auto pl-0 ml-auto mt-3 mb-2 text-right{% endblock %}
+
+{% block search_results_list %}
+    <ul class="mb-4 list-unstyled {% if print_preview %}search-print-preview{% endif %}">
+        {%- for result, result_url in search_results %}
+            {%- include "app/_search-result.html.jinja2" %}
+        {%- endfor %}
+    </ul>
+{% endblock search_results_list %}

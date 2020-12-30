@@ -381,16 +381,27 @@ ul.navbar-nav li ul li {
   margin-bottom: 2em;
   a {
     color: $black;
+    .csl-block:first-of-type {
+      font-size: $h4-font-size;
+      font-weight: bold;
+      color: $salmon;
+    }
     @include hover {
       color: $black;
+      text-decoration: none;
+      .csl-block:first-of-type {
+        color: $black;
+      }
     }
   }
 }
 .search-abstract {
-  padding-left: 1rem;
-  margin-top: 1rem;
+  margin-top: .5rem;
   margin-bottom: 1rem;
   font-size: .85em;
+  .search-print-preview & {
+    margin-left: 1em;  // Match APA style indent.
+  }
 }
 
 // Print media styles.

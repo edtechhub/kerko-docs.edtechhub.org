@@ -7,7 +7,7 @@ from whoosh.fields import BOOLEAN, STORED
 
 from kerko import codecs, extractors, transformers
 from kerko.composer import Composer
-from kerko.renderers import TemplateStringRenderer
+from kerko.renderers import TemplateRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
 
 from .transformers import extra_field_cleaner
@@ -283,9 +283,8 @@ class Config():
             key='edtechhub',
             field=KERKO_COMPOSER.fields['edtechhub'],
             activator=lambda field, item: bool(item.get(field.key)),
-            renderer=TemplateStringRenderer(
-                '<span class="fas fa-star" title="{title}"'
-                ' aria-hidden="true"></span>'.format(title=_('Published by The EdTech Hub'))
+            renderer=TemplateRenderer(
+                'app/_hub-badge.html.jinja2', badge_title=_('Published by The EdTech Hub')
             ),
             weight=100,
         )

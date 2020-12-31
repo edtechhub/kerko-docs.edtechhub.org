@@ -1,5 +1,7 @@
 {% extends 'kerko/_search-result.html.jinja2' %}
 
+{% block search_item_classes %}d-block w-100 mr-auto{% endblock %}
+
 {% block search_item_formatted_display %}
     {{- result.preview|safe -}}
 {% endblock search_item_formatted_display %}

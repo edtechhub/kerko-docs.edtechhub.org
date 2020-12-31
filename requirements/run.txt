@@ -21,7 +21,7 @@ idna==2.9                 # via requests
 itsdangerous==1.1.0       # via flask, flask-wtf
 jinja2==2.11.2            # via flask, flask-babel, kerko
 jsmin==2.2.2              # via -r requirements/run.in
-git+https://github.com/whiskyechobravo/kerko.git@a42080a7e0b2a34dee76251aaa5ae096f49b8978#egg=kerko  # via -r requirements/run.in
+git+https://github.com/whiskyechobravo/kerko.git@b271ada9c1463d19d664e436f9af6d0bf5615def#egg=kerko  # via -r requirements/run.in
 libsass==0.20.0           # via -r requirements/run.in
 markupsafe==1.1.1         # via jinja2, wtforms
 marshmallow==3.6.1        # via environs

@@ -51,9 +51,10 @@ class Config():
 
     NAV_TITLE = _("Evidence Library")
     KERKO_TITLE = _("Evidence Library – The EdTech Hub")
-    KERKO_CSL_STYLE = 'apa'
     KERKO_PRINT_ITEM_LINK = True
     KERKO_PRINT_CITATIONS_LINK = True
+    KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'coins', 'data', 'preview']
+    KERKO_RESULTS_ABSTRACTS = True
     KERKO_TEMPLATE_BASE = 'app/base.html.jinja2'
     KERKO_TEMPLATE_LAYOUT = 'app/layout.html.jinja2'
     KERKO_TEMPLATE_SEARCH = 'app/search.html.jinja2'
@@ -61,6 +62,11 @@ class Config():
     KERKO_TEMPLATE_ITEM = 'app/item.html.jinja2'
     KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW = True
     KERKO_RELATIONS_INITIAL_LIMIT = 50
+
+    # CAUTION: The URL's query string must be changed after any edit to the CSL
+    # style, otherwise zotero.org might still use a previously cached version of
+    # the file.
+    KERKO_CSL_STYLE = 'https://docs.edtechhub.org/static/dist/csl/eth_apa.xml?202012301815'
 
     KERKO_COMPOSER = Composer(
         whoosh_language=KERKO_WHOOSH_LANGUAGE,
@@ -80,6 +86,17 @@ class Config():
                 transformers=[extra_field_cleaner]
             ),
             codec=codecs.JSONFieldCodec()
+        )
+    )
+
+    # Add field for storing the formatted item preview used on search result
+    # pages. This relies on the CSL style's in-text citation formatting and only
+    # makes sense using our custom CSL style!
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='preview',
+            field_type=STORED,
+            extractor=extractors.ItemExtractor(key='citation', format_='citation')
         )
     )
 
@@ -273,7 +290,6 @@ class Config():
             weight=100,
         )
     )
-
 
 
 class DevelopmentConfig(Config):

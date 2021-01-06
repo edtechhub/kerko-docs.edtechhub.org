@@ -10,6 +10,7 @@ from kerko.composer import Composer
 from kerko.renderers import TemplateRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
 
+from .extractors import InCollectionBoostExtractor
 from .transformers import extra_field_cleaner
 
 env = Env()  # pylint: disable=invalid-name
@@ -261,7 +262,7 @@ class Config():
         )
     )
 
-    # Featured publisher facet and badge.
+    # Featured publisher facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_featured',
@@ -271,6 +272,8 @@ class Config():
             collection_key='SGAGGGLK',
         )
     )
+
+    # EdTech Hub flag and badge.
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='edtechhub',
@@ -287,6 +290,15 @@ class Config():
                 'app/_hub-badge.html.jinja2', badge_title=_('Published by The EdTech Hub')
             ),
             weight=100,
+        )
+    )
+
+    # Boost factor for every field of any EdTech Hub publication.
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='_boost',  # Per whoosh.writing.IndexWriter.add_document() usage.
+            field_type=None,  # Indicate the boost factor.
+            extractor=InCollectionBoostExtractor(collection_key='BFS3UXT4', boost_factor=3.0),
         )
     )
 

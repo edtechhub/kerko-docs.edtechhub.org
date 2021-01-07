@@ -21,7 +21,7 @@ idna==2.9                 # via requests
 itsdangerous==1.1.0       # via flask, flask-wtf
 jinja2==2.11.2            # via flask, flask-babel, kerko
 jsmin==2.2.2              # via -r requirements/run.in
-git+https://github.com/whiskyechobravo/kerko.git@b271ada9c1463d19d664e436f9af6d0bf5615def#egg=kerko  # via -r requirements/run.in
+git+https://github.com/whiskyechobravo/kerko.git@42097b3c30b0f6224a4c852429acaf2847f68dd4#egg=kerko  # via -r requirements/run.in
 libsass==0.20.0           # via -r requirements/run.in
 markupsafe==1.1.1         # via jinja2, wtforms
 marshmallow==3.6.1        # via environs
@@ -29,7 +29,7 @@ pathlib==1.0.1            # via pyzotero
 pyparsing==2.4.7          # via bibtexparser
 python-dotenv==0.13.0     # via -r requirements/run.in, environs
 pytz==2020.1              # via babel, flask-babel, pyzotero
-pyzotero==1.4.16          # via kerko
+pyzotero==1.4.20          # via kerko
 requests==2.23.0          # via pyzotero
 six==1.15.0               # via libsass
 urllib3==1.25.9           # via requests

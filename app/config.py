@@ -3,13 +3,13 @@ import re
 
 from environs import Env
 from flask_babel import gettext as _
-from whoosh.fields import BOOLEAN, STORED
-
 from kerko import codecs, extractors, transformers
 from kerko.composer import Composer
 from kerko.renderers import TemplateRenderer
-from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec
+from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec, SortSpec
+from whoosh.fields import BOOLEAN, STORED
 
+from .extractors import InCollectionBoostExtractor
 from .transformers import extra_field_cleaner
 
 env = Env()  # pylint: disable=invalid-name
@@ -272,7 +272,7 @@ class Config():
         )
     )
 
-    # Featured publisher facet and badge.
+    # Featured publisher facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_featured',
@@ -282,6 +282,8 @@ class Config():
             collection_key='SGAGGGLK',
         )
     )
+
+    # EdTech Hub flag and badge.
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='edtechhub',
@@ -298,6 +300,36 @@ class Config():
                 'app/_hub-badge.html.jinja2', badge_title=_('Published by The EdTech Hub')
             ),
             weight=100,
+        )
+    )
+
+    # Boost factor for every field of any EdTech Hub publication.
+    KERKO_COMPOSER.add_field(
+        FieldSpec(
+            key='_boost',  # Per whoosh.writing.IndexWriter.add_document() usage.
+            field_type=None,  # Indicate the boost factor.
+            extractor=InCollectionBoostExtractor(collection_key='BFS3UXT4', boost_factor=5.0),
+        )
+    )
+
+    # Sort option based on the EdTech Hub flag.
+    KERKO_COMPOSER.add_sort(
+        SortSpec(
+            key='hub_desc',
+            label=_('EdTech Hub first'),
+            weight=5,
+            fields=[
+                KERKO_COMPOSER.fields['edtechhub'],
+                KERKO_COMPOSER.fields['sort_date'],
+                KERKO_COMPOSER.fields['sort_creator'],
+                KERKO_COMPOSER.fields['sort_title']
+            ],
+            reverse=[
+                False,
+                True,
+                False,
+                False,
+            ],
         )
     )
 

@@ -5,7 +5,7 @@ Flask>=1.0.2
 Flask-Babel>=2.0.0
 Flask-Assets
 jsmin>=2.2.2
-git+https://github.com/whiskyechobravo/kerko.git@b271ada9c1463d19d664e436f9af6d0bf5615def#egg=kerko
+git+https://github.com/whiskyechobravo/kerko.git@42097b3c30b0f6224a4c852429acaf2847f68dd4#egg=kerko
 libsass
 python-dotenv>=0.10.2
 webassets>=2.0

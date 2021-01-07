@@ -96,7 +96,18 @@ class Config():
         FieldSpec(
             key='preview',
             field_type=STORED,
-            extractor=extractors.ItemExtractor(key='citation', format_='citation')
+            extractor=extractors.TransformerExtractor(
+                extractor=extractors.ItemExtractor(key='citation', format_='citation'),
+                # Zotero wraps the citation in a <span> element (most probably
+                # because it expects the 'citation' format to be used in-text),
+                # but that <span> has to be removed because our custom CSL style
+                # causes <div>s to be nested within. Let's replace that <span>
+                # with the same markup that the 'bib' format usually provides.
+                transformers=[
+                    lambda value: re.sub(r'^<span>', '<div class="csl-entry">', value, count=1),
+                    lambda value: re.sub(r'</span>$', '</div>', value, count=1),
+                ]
+            )
         )
     )
 

@@ -307,7 +307,7 @@ class Config():
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='_boost',  # Per whoosh.writing.IndexWriter.add_document() usage.
-            field_type=None,  # Indicate the boost factor.
+            field_type=None,  # Not to be added to the schema.
             extractor=InCollectionBoostExtractor(collection_key='BFS3UXT4', boost_factor=5.0),
         )
     )

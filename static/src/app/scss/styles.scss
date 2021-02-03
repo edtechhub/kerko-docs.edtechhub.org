@@ -410,9 +410,7 @@ ul.navbar-nav li ul li {
   }
 }
 .search-abstract {
-  margin-top: .5rem;
-  margin-bottom: 1rem;
-  font-size: .85em;
+  font-size: .875em;  // Match .btn-sm font-size.
   .search-print-preview & {
     margin-left: 1em;  // Match APA style indent.
   }

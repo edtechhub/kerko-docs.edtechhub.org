@@ -394,6 +394,14 @@ ul.navbar-nav li ul li {
       }
     }
   }
+  .btn-link {
+    @include hover {
+      span {
+        color: $black !important;
+        text-decoration: underline;
+      }
+    }
+  }
   .hub-badge {
     width: auto;
     height: $h4-font-size;

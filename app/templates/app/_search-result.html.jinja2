@@ -1,7 +1,17 @@
 {% extends 'kerko/_search-result.html.jinja2' %}
 
+{% block search_list_item_classes %}search-item break-word{% endblock %}
+
 {% block search_item_classes %}d-block w-100 mr-auto{% endblock %}
 
 {% block search_item_formatted_display %}
     {{- result.preview|safe -}}
 {% endblock search_item_formatted_display %}
+
+{% block search_abstract_classes %}search-abstract pre-line{% endblock %}
+
+{% block search_item_links %}{% endblock %}
+
+{% block attachment_links_btn_classes %}btn btn-sm btn-link dropdown-toggle text-nowrap text-muted px-0{% endblock %}
+
+{% block attachment_link_btn_classes %}btn btn-sm btn-link text-nowrap text-muted px-0{% endblock %}

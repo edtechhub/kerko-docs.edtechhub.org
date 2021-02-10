@@ -53,7 +53,7 @@ class Config():
     KERKO_TITLE = _("Evidence Library – The EdTech Hub")
     KERKO_PRINT_ITEM_LINK = True
     KERKO_PRINT_CITATIONS_LINK = True
-    KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'coins', 'data', 'preview']
+    KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'coins', 'data', 'preview', 'url']
     KERKO_RESULTS_ABSTRACTS = True
     KERKO_TEMPLATE_BASE = 'app/base.html.jinja2'
     KERKO_TEMPLATE_LAYOUT = 'app/layout.html.jinja2'
@@ -307,7 +307,7 @@ class Config():
     KERKO_COMPOSER.add_field(
         FieldSpec(
             key='_boost',  # Per whoosh.writing.IndexWriter.add_document() usage.
-            field_type=None,  # Indicate the boost factor.
+            field_type=None,  # Not to be added to the schema.
             extractor=InCollectionBoostExtractor(collection_key='BFS3UXT4', boost_factor=5.0),
         )
     )

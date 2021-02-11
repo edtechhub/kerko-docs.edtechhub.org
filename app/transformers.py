@@ -9,10 +9,8 @@ from copy import deepcopy
 def extra_field_cleaner(value):
     if 'extra' in value:
         value = deepcopy(value)  # Preserve original data, might be used by other extractors.
-        value['extra'] = re.sub(
-            r'^(\s*(EdTechHub|KerkoCite)\..*)$',
-            '',
-            value['extra'],
-            flags=re.IGNORECASE | re.MULTILINE
+        pattern = re.compile(r'^\s*(EdTechHub|KerkoCite)\..*', flags=re.IGNORECASE)
+        value['extra'] = '\n'.join(
+            filter(lambda line: not pattern.match(line), value['extra'].split('\n'))
         ).strip()
     return value

@@ -272,13 +272,24 @@ class Config():
         )
     )
 
+    # Hub Only facet.
+    KERKO_COMPOSER.add_facet(
+        CollectionFacetSpec(
+            key='facet_edtechhub_only',
+            title=_('EdTech Hub Publications'),
+            filter_key='hubonly',
+            weight=1,
+            collection_key='BFS3UXT4',
+        )
+    )
+
     # Featured publisher facet.
     KERKO_COMPOSER.add_facet(
         CollectionFacetSpec(
             key='facet_featured',
-            title=_('Featured publisher'),
+            title=_('Other publishers'),
             filter_key='featured',
-            weight=100,
+            weight=101,
             collection_key='SGAGGGLK',
         )
     )

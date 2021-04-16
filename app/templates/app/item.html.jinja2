@@ -1,5 +1,11 @@
 {% extends 'kerko/item.html.jinja2' %}
 
+{% block kerko_item_js %}
+    {%- assets "item_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+    {%- endassets %}
+{% endblock kerko_item_js %}
+
 {% block kerko_print_js %}
     {%- if config.KERKO_PRINT_ITEM_LINK %}
         {%- assets "print_js" %}

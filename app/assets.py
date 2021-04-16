@@ -36,6 +36,11 @@ search_js = Bundle(  # pylint: disable=invalid-name
     filters='jsmin',
     output='dist/js/search.min.js',
 )
+item_js = Bundle(  # pylint: disable=invalid-name
+    'kerko/kerko/js/item.js',
+    filters='jsmin',
+    output='dist/js/item.min.js',
+)
 print_js = Bundle(  # pylint: disable=invalid-name
     'kerko/kerko/js/print.js',
     filters='jsmin',
@@ -58,6 +63,7 @@ class EnvironmentWithBundles(Environment):
             assets.register('css_styles', css_min_styles)
         assets.register('common_js', common_js)
         assets.register('search_js', search_js)
+        assets.register('item_js', item_js)
         assets.register('print_js', print_js)
 
 

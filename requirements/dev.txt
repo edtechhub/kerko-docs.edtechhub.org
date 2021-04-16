@@ -62,7 +62,7 @@ jinja2==2.11.2
     #   kerko
 jsmin==2.2.2
     # via -r requirements/run.in
-git+https://github.com/whiskyechobravo/kerko.git@74f7701af57872967a82a4163d27a22e38ab7006#egg=kerko
+git+https://github.com/whiskyechobravo/kerko.git@9b857a0cc60ddba43161d8d6c0fc33f9a4dfede9#egg=kerko
     # via -r requirements/run.in
 lazy-object-proxy==1.4.3
     # via astroid

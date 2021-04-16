@@ -55,6 +55,8 @@ class Config():
     KERKO_PRINT_CITATIONS_LINK = True
     KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'coins', 'data', 'preview', 'url']
     KERKO_RESULTS_ABSTRACTS = True
+    KERKO_RESULTS_ABSTRACTS_MAX_LENGTH = 500
+    KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY = 40
     KERKO_TEMPLATE_BASE = 'app/base.html.jinja2'
     KERKO_TEMPLATE_LAYOUT = 'app/layout.html.jinja2'
     KERKO_TEMPLATE_SEARCH = 'app/search.html.jinja2'

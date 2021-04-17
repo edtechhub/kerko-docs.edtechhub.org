@@ -33,12 +33,12 @@ Some things to know:
   push the resulting files from `static/dist/` to the code repository, so that
   the built assets can be used on the production server.
 
-## Developing EdTechHubLib
+## Developing the application
 
-Making changes to EdTechHubLib requires a Python development environment. Once
-the changes are tested in that environment, they can be pushed to the Git
-repository and deployed on the production server (see the **Deploying
-EdTechHubLib in production** section).
+Making changes to this application requires a Python development environment.
+Once the changes are tested in that environment, they can be pushed to the Git
+repository and deployed on the production server (see the **Deploying the
+application in production** section).
 
 ### Installing the application locally
 
@@ -56,13 +56,13 @@ Steps:
    following shell commands:
 
    ```bash
-   git clone https://github.com/edtechhub/eth-evidence-library-kerko.git edtechhublib
+   git clone https://github.com/edtechhub/kerko-docs.edtechhub.org.git edtechhublib
    cd edtechhublib
    pip install -r requirements/dev.txt
    npm install
    ```
 
-   This will install many packages required by Kerko and EdTechHubLib.
+   This will install many packages required by Kerko and this application.
 
 2. Copy `dotenv.sample` to `.env`. Open `.env` in a text editor to assign proper
    values to the variables outlined below.
@@ -102,7 +102,7 @@ Steps:
    flask kerko SUBCOMMAND --help
    ```
 
-4. Run EdTechHubLib using Flask's built-in server:
+4. Run the application using Flask's built-in server:
 
    ```bash
    flask run
@@ -167,13 +167,13 @@ to the repository.
 
 Kerko can be upgraded like regular Python packages (see **Upgrading Python
 dependencies**). However, make sure to check [Kerko's changelog][Kerko_changelog].
-The upgrade may require some changes to EdTechHubLib, or a rebuild of the search
-index.
+The upgrade may require some changes to this application, or a rebuild of the
+search index.
 
 Similarly, some change to Kerko's configuration, especially changes to the
-`KERKO_COMPOSER` variable in EdTechHubLib's `app/config.py`, may have an impact
-on the structure of the search index. A rebuild of the search index may be
-necessary after such change.
+`KERKO_COMPOSER` variable in this application's `app/config.py`, may have an
+impact on the structure of the search index. A rebuild of the search index may
+be necessary after such change.
 
 With your virtual environment active, to rebuild the search index:
 
@@ -209,9 +209,9 @@ any change will be overwritten by the build process.
 
 ## Managing the translations
 
-The EdTechHubLib application maintains its own translations of Kerko's messages.
-These can be updated from a local install of Kerko. All of the commands below
-should be run from Kerko's directory and specify EdTechHubLib's `translations`
+This application maintains its own translations of Kerko's messages. These can
+be updated from a local install of Kerko. All of the commands below should be
+run from Kerko's directory and specify the application's `translations`
 directory (here indicated by `YOUR_TRANSLATIONS_DIR`).
 
 Create a new PO file (for a new locale) based on the POT file. Replace
@@ -235,7 +235,7 @@ python setup.py compile_catalog --directory YOUR_TRANSLATIONS_DIR
 
 Note: the compiled MO files are pushed to the repository to ease deployments.
 
-## Deploying EdTechHubLib
+## Deploying the application
 
 There are two types of deployment: the initial installation or the deployment of
 changes to an existing installation.
@@ -298,7 +298,7 @@ The following procedure has to be performed only once.
 
 ### Deploying changes to the existing installation on Gandi
 
-The following procedure is necessary to deploy changes to EdTechHubLib into
+The following procedure is necessary to deploy changes to this application into
 production.
 
 1. Once all required changes have been implemented, built, and tested in the

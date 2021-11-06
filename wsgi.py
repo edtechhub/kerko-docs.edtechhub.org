@@ -3,10 +3,10 @@ from flask import redirect, url_for
 
 from app import create_app
 
-env = Env()  # pylint: disable=invalid-name
+env = Env()
 env.read_env()
 
-application = create_app(env.str('FLASK_ENV'))  # pylint: disable=invalid-name
+application = create_app(env.str('FLASK_ENV'))
 
 
 @application.route('/')

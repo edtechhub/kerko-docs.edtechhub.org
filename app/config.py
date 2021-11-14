@@ -115,8 +115,8 @@ class Config():
             )
         )
 
-        # Add extractors for the 'alternateId' field.
-        self.KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        # Add extractors for the 'alternate_id' field.
+        self.KERKO_COMPOSER.fields['alternate_id'].extractor.extractors.append(
             extractors.TransformerExtractor(
                 extractor=extractors.ItemDataExtractor(key='extra'),
                 transformers=[
@@ -129,7 +129,7 @@ class Config():
                 ]
             )
         )
-        self.KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        self.KERKO_COMPOSER.fields['alternate_id'].extractor.extractors.append(
             extractors.TransformerExtractor(
                 extractor=extractors.ItemDataExtractor(key='extra'),
                 transformers=[
@@ -142,7 +142,7 @@ class Config():
                 ]
             )
         )
-        self.KERKO_COMPOSER.fields['alternateId'].extractor.extractors.append(
+        self.KERKO_COMPOSER.fields['alternate_id'].extractor.extractors.append(
             extractors.TransformerExtractor(
                 extractor=extractors.ItemDataExtractor(key='extra'),
                 transformers=[

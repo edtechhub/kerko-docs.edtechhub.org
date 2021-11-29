@@ -1,11 +1,7 @@
-Babel>=2.6.0
-Bootstrap-Flask>=1.0.10
 environs>=5.0.0
-Flask>=1.0.2
-Flask-Babel>=2.0.0
 Flask-Assets
 jsmin>=2.2.2
-git+https://github.com/whiskyechobravo/kerko.git@9ea0a54dd91e52ddf631f0d83166b0581636edbf#egg=kerko
-libsass
+git+https://github.com/whiskyechobravo/kerko.git@cec66ca184bfa1604fa8eb5aefedf74bcba91314#egg=kerko
+libsass>=0.21.0
 python-dotenv>=0.10.2
 webassets>=2.0

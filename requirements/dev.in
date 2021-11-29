@@ -1,8 +1,8 @@
 -r run.in
 pip-tools>=5.5.0
 pipdeptree
-pycodestyle
-pydocstyle
-pylint
+pycodestyle>=2.8.0
+pydocstyle>=6.1.0
+pylint>=2.5.0
 rope
 yapf

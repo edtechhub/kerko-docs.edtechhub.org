@@ -50,6 +50,7 @@ class Config():
         self.ABOUT_TEAM_URL = 'https://edtechhub.org/about-edtech-hub/directors-team/'
         self.ABOUT_ADVISORS_URL = 'https://edtechhub.org/about-edtech-hub/advisors/'
         self.TOOLS_DATABASE_URL = 'https://database.edtechhub.org/'
+        self.SANDBOXES_URL = 'https://edtechhub.org/sandboxes/'
         self.BLOG_URL = 'https://edtechhub.org/blog/'
         self.CONTACT_URL = 'https://edtechhub.org/contact-us/'
 

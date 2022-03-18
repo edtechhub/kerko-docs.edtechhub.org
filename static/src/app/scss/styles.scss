@@ -401,18 +401,18 @@ ul.navbar-nav li ul li {
       }
     }
   }
-  .hub-badge {
-    width: auto;
-    height: $h4-font-size;
-    margin-top: -1rem;
-    margin-left: 1rem;
-  }
 }
 .search-abstract {
   font-size: .875em;  // Match .btn-sm font-size.
   .search-print-preview & {
     margin-left: 1em;  // Match APA style indent.
   }
+}
+.hub-badge {
+  width: auto;
+  height: $h4-font-size;
+  margin-top: -.25em;
+  margin-left: 1rem;
 }
 .text-badge {
   color: #212529;

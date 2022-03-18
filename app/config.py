@@ -335,7 +335,7 @@ class Config():
                 renderer=TemplateRenderer(
                     'app/_text-badge.html.jinja2', text=_('Internal<br />document')
                 ),
-                weight=100,
+                weight=10,
             )
         )
         # "Coming soon" flag and badge.
@@ -354,7 +354,7 @@ class Config():
                 renderer=TemplateRenderer(
                     'app/_text-badge.html.jinja2', text=_('Coming<br >soon')
                 ),
-                weight=100,
+                weight=20,
             )
         )
 

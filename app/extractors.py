@@ -12,7 +12,7 @@ class InCollectionBoostExtractor(InCollectionExtractor):
         super().__init__(**kwargs)
         self.boost_factor = boost_factor
 
-    def extract(self, item_context, library_context, spec):
-        if super().extract(item_context, library_context, spec):
+    def extract(self, item, library_context, spec):
+        if super().extract(item, library_context, spec):
             return self.boost_factor
         return None

@@ -9,7 +9,7 @@ from kerko.renderers import TemplateRenderer
 from kerko.specs import BadgeSpec, CollectionFacetSpec, FieldSpec, SortSpec
 from whoosh.fields import BOOLEAN, STORED
 
-from .extractors import InCollectionBoostExtractor
+from .extractors import InCollectionBoostExtractor, MatchesTagExtractor
 from .transformers import extra_field_cleaner
 
 # pylint: disable=invalid-name
@@ -315,6 +315,44 @@ class Config():
                 activator=lambda field, item: bool(item.get(field.key)),
                 renderer=TemplateRenderer(
                     'app/_hub-badge.html.jinja2', badge_title=_('Published by The EdTech Hub')
+                ),
+                weight=100,
+            )
+        )
+        # "Internal document" flag and badge.
+        self.KERKO_COMPOSER.add_field(
+            FieldSpec(
+                key='internal',
+                field_type=BOOLEAN(stored=True),
+                extractor=MatchesTagExtractor(pattern=r'^_internal$'),
+            )
+        )
+        self.KERKO_COMPOSER.add_badge(
+            BadgeSpec(
+                key='internal',
+                field=self.KERKO_COMPOSER.fields['internal'],
+                activator=lambda field, item: item.get(field.key, False),
+                renderer=TemplateRenderer(
+                    'app/_text-badge.html.jinja2', text=_('Internal<br />document')
+                ),
+                weight=100,
+            )
+        )
+        # "Coming soon" flag and badge.
+        self.KERKO_COMPOSER.add_field(
+            FieldSpec(
+                key='comingsoon',
+                field_type=BOOLEAN(stored=True),
+                extractor=MatchesTagExtractor(pattern=r'^_comingsoon$'),
+            )
+        )
+        self.KERKO_COMPOSER.add_badge(
+            BadgeSpec(
+                key='comingsoon',
+                field=self.KERKO_COMPOSER.fields['comingsoon'],
+                activator=lambda field, item: item.get(field.key, False),
+                renderer=TemplateRenderer(
+                    'app/_text-badge.html.jinja2', text=_('Coming<br >soon')
                 ),
                 weight=100,
             )

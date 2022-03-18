@@ -1,1 +1,1 @@
-<img class="d-inline-block hub-badge" width="519" height="129" title="{{ badge_title }}" src="{{ url_for('static', filename='dist/images/logo.png') }}" aria-hidden="true"/>
+{% if mode != 'item' %}<img class="d-inline-block hub-badge" width="519" height="129" title="{{ badge_title }}" src="{{ url_for('static', filename='dist/images/logo.png') }}" aria-hidden="true"/>{% endif %}

@@ -16,7 +16,7 @@
 
 {% block content_header %}
     <h1 class="rule my-2 clearfix">
-        {#- Removed badges! -#}
+        {{- badges(item, mode='item') -}}
         {{- title|escape -}}
     </h1>
 {% endblock content_header %}

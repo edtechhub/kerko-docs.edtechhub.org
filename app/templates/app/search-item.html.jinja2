@@ -5,7 +5,7 @@
 {% block search_results %}
     {%- include "kerko/_pager.html.jinja2" %}
     <h2 class="h1 rule mb-3 clearfix">
-        {#- Removed badges! -#}
+        {{- badges(item, mode='item') -}}
         {{- title|escape -}}
     </h2>
 {% endblock search_results %}

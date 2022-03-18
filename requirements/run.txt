@@ -41,7 +41,7 @@ future==0.18.2
     # via bibtexparser
 idna==3.3
     # via requests
-importlib-metadata==4.8.2
+importlib-metadata==4.11.3
     # via click
 itsdangerous==2.0.1
     # via
@@ -54,7 +54,7 @@ jinja2==3.0.2
     #   kerko
 jsmin==3.0.0
     # via -r requirements/run.in
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@cec66ca184bfa1604fa8eb5aefedf74bcba91314
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@73e40ba00d70a4f4a1f5a64d3391ef389a41b4c7
     # via -r requirements/run.in
 libsass==0.21.0
     # via -r requirements/run.in
@@ -85,7 +85,7 @@ six==1.16.0
     # via
     #   libsass
     #   w3lib
-typing-extensions==3.10.0.2
+typing-extensions==4.1.1
     # via importlib-metadata
 urllib3==1.26.7
     # via requests
@@ -107,5 +107,5 @@ wtforms==2.3.3
     # via
     #   flask-wtf
     #   kerko
-zipp==3.6.0
+zipp==3.7.0
     # via importlib-metadata

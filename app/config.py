@@ -78,9 +78,9 @@ class Config():
             whoosh_language=self.KERKO_WHOOSH_LANGUAGE,
             exclude_default_facets=['facet_tag', 'facet_link', 'facet_item_type'],
             exclude_default_fields=['data'],
-            default_item_exclude_re='^_exclude$',
-            default_child_include_re='^(_publish|publishPDF)$',
-            default_child_exclude_re='',
+            default_item_exclude_re=r'^_exclude$',
+            default_child_include_re=r'^(_publish|publishPDF)$',
+            default_child_exclude_re=r'',
         )
 
         # Replace the default 'data' extractor to strip unwanted data from the Extra field.

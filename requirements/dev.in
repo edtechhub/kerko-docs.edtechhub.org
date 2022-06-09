@@ -1,8 +1,9 @@
--r run.in
+-r run.txt
 pip-tools>=5.5.0
 pipdeptree
 pycodestyle>=2.8.0
 pydocstyle>=6.1.0
 pylint>=2.5.0
 rope
+safety
 yapf

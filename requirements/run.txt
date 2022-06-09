@@ -12,19 +12,19 @@ bibtexparser==1.2.0
     # via pyzotero
 bootstrap-flask==1.8.0
     # via kerko
-certifi==2021.10.8
+certifi==2022.5.18.1
     # via requests
-charset-normalizer==2.0.7
+charset-normalizer==2.0.12
     # via requests
-click==8.0.3
+click==8.1.3
     # via
     #   flask
     #   kerko
 environs==9.3.4
     # via -r requirements/run.in
-feedparser==6.0.8
+feedparser==6.0.10
     # via pyzotero
-flask==2.0.2
+flask==2.0.3
     # via
     #   bootstrap-flask
     #   flask-assets
@@ -41,9 +41,9 @@ future==0.18.2
     # via bibtexparser
 idna==3.3
     # via requests
-importlib-metadata==4.11.3
+importlib-metadata==4.11.4
     # via click
-itsdangerous==2.0.1
+itsdangerous==2.1.2
     # via
     #   flask
     #   flask-wtf
@@ -52,25 +52,29 @@ jinja2==3.0.2
     #   flask
     #   flask-babel
     #   kerko
-jsmin==3.0.0
+jsmin==3.0.1
     # via -r requirements/run.in
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@73e40ba00d70a4f4a1f5a64d3391ef389a41b4c7
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@acdf73a7b6ab6beb03826d47ef2d2cc8848511da
     # via -r requirements/run.in
 libsass==0.21.0
     # via -r requirements/run.in
-markupsafe==2.0.1
+markupsafe==2.1.1
     # via
     #   jinja2
     #   wtforms
-marshmallow==3.14.0
+marshmallow==3.16.0
     # via environs
-pyparsing==3.0.4
-    # via bibtexparser
-python-dotenv==0.19.1
+packaging==21.3
+    # via marshmallow
+pyparsing==3.0.9
+    # via
+    #   bibtexparser
+    #   packaging
+python-dotenv==0.20.0
     # via
     #   -r requirements/run.in
     #   environs
-pytz==2021.3
+pytz==2022.1
     # via
     #   babel
     #   flask-babel
@@ -85,9 +89,9 @@ six==1.16.0
     # via
     #   libsass
     #   w3lib
-typing-extensions==4.1.1
+typing-extensions==4.2.0
     # via importlib-metadata
-urllib3==1.26.7
+urllib3==1.26.9
     # via requests
 w3lib==1.22.0
     # via kerko
@@ -95,17 +99,17 @@ webassets==2.0
     # via
     #   -r requirements/run.in
     #   flask-assets
-werkzeug==2.0.2
+werkzeug==2.0.3
     # via
     #   flask
     #   kerko
 whoosh==2.7.4
     # via kerko
-wrapt==1.13.3
+wrapt==1.14.1
     # via kerko
 wtforms==2.3.3
     # via
     #   flask-wtf
     #   kerko
-zipp==3.7.0
+zipp==3.8.0
     # via importlib-metadata

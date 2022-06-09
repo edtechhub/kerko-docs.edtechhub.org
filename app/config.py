@@ -397,8 +397,6 @@ class DevelopmentConfig(Config):
         self.CONFIG = 'development'
         self.DEBUG = True
         self.ASSETS_DEBUG = env.bool('ASSETS_DEBUG', True)  # Don't bundle/minify static assets.
-        self.KERKO_ZOTERO_START = env.int('KERKO_ZOTERO_START', 0)
-        self.KERKO_ZOTERO_END = env.int('KERKO_ZOTERO_END', 0)
         self.LIBSASS_STYLE = 'expanded'
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
 

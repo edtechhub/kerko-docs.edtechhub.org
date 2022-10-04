@@ -58,7 +58,7 @@ class Config():
         self.KERKO_TITLE = _("Evidence Library – The EdTech Hub")
         self.KERKO_PRINT_ITEM_LINK = True
         self.KERKO_PRINT_CITATIONS_LINK = True
-        self.KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'coins', 'data', 'preview', 'url']
+        self.KERKO_RESULTS_FIELDS = ['id', 'attachments', 'bib', 'data', 'preview', 'url']
         self.KERKO_RESULTS_ABSTRACTS = True
         self.KERKO_RESULTS_ABSTRACTS_MAX_LENGTH = 500
         self.KERKO_RESULTS_ABSTRACTS_MAX_LENGTH_LEEWAY = 40

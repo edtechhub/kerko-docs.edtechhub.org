@@ -157,14 +157,14 @@ class Config():
             )
         )
 
-        # Learners type facet.
+        # Learners facet.
         self.KERKO_COMPOSER.add_facet(
             CollectionFacetSpec(
                 key='facet_learners',
-                filter_key='learners',
                 title=_('Learners'),
-                weight=10,
-                collection_key='WZXRTV9N',
+                filter_key='learners',
+                weight=1,
+                collection_key='X6MP49KP',
             )
         )
 
@@ -174,8 +174,8 @@ class Config():
                 key='facet_educators',
                 filter_key='educators',
                 title=_('Educators'),
-                weight=20,
-                collection_key='MS38G6YW',
+                weight=2,
+                collection_key='HCTKHFNN',
             )
         )
 
@@ -185,8 +185,8 @@ class Config():
                 key='facet_education_systems',
                 filter_key='education_systems',
                 title=_('Education systems'),
-                weight=30,
-                collection_key='ZN4PI2Z6',
+                weight=3,
+                collection_key='X3DPTXLG',
             )
         )
 
@@ -196,8 +196,8 @@ class Config():
                 key='facet_cost_effectiveness',
                 filter_key='cost_effectiveness',
                 title=_('Cost effectiveness'),
-                weight=40,
-                collection_key='SCMAR3ZW',
+                weight=4,
+                collection_key='3TN4ME9B',
             )
         )
 
@@ -207,8 +207,8 @@ class Config():
                 key='facet_hardware_and_modality',
                 filter_key='hardware_and_modality',
                 title=_('Hardware and modality'),
-                weight=50,
-                collection_key='CE7P7GJX',
+                weight=5,
+                collection_key='C965YJYB',
             )
         )
 
@@ -218,8 +218,8 @@ class Config():
                 key='facet_educational_level',
                 filter_key='educational_level',
                 title=_('Educational level'),
-                weight=60,
-                collection_key='B2CQYHX8',
+                weight=6,
+                collection_key='B42SBYGD',
             )
         )
 
@@ -229,8 +229,8 @@ class Config():
                 key='facet_within_country_contexts',
                 filter_key='within_country_contexts',
                 title=_('Within-country contexts'),
-                weight=70,
-                collection_key='KY3HHD5I',
+                weight=7,
+                collection_key='P3Q22NYF',
             )
         )
 
@@ -240,19 +240,19 @@ class Config():
                 key='facet_language_of_publication',
                 filter_key='language_of_publication',
                 title=_('Language of publication'),
-                weight=80,
-                collection_key='5WYC9ALL',
+                weight=8,
+                collection_key='ZNNITHFH',
             )
         )
 
-        # Country type facet.
+        # Publisher and type facet.
         self.KERKO_COMPOSER.add_facet(
             CollectionFacetSpec(
-                key='facet_country',
-                filter_key='country',
-                title=_('Geography'),
-                weight=90,
-                collection_key='4UP8CZQE',
+                key='facet_publisher_type',
+                filter_key='publisher_type',
+                title=_('Publisher and type'),
+                weight=9,
+                collection_key='N6HGZU24',
             )
         )
 
@@ -262,8 +262,8 @@ class Config():
                 key='facet_research_method',
                 filter_key='research_method',
                 title=_('Research method'),
-                weight=110,
-                collection_key='P4WEVZLQ',
+                weight=10,
+                collection_key='9WEL59XM',
             )
         )
 
@@ -273,30 +273,30 @@ class Config():
                 key='facet_covid_and_reopening_of_schools',
                 filter_key='covid_and_reopening_of_schools',
                 title=_('COVID and reopening of schools'),
-                weight=120,
-                collection_key='TIYLRP8N',
+                weight=11,
+                collection_key='NRS95TC8',
             )
         )
 
-        # Hub Only facet.
+        # Topic Area facet.
         self.KERKO_COMPOSER.add_facet(
             CollectionFacetSpec(
-                key='facet_edtechhub_only',
-                title=_('EdTech Hub Publications'),
-                filter_key='hubonly',
-                weight=1,
-                collection_key='BFS3UXT4',
+                key='facet_topic_area',
+                title=_('Topic Area'),
+                filter_key='topic_area',
+                weight=12,
+                collection_key='W6YXX3J6',
             )
         )
 
-        # Featured publisher facet.
+        # Focus Countries facet.
         self.KERKO_COMPOSER.add_facet(
             CollectionFacetSpec(
-                key='facet_featured',
-                title=_('Other publishers'),
-                filter_key='featured',
-                weight=101,
-                collection_key='SGAGGGLK',
+                key='facet_focus_countries',
+                title=_('Focus Countries'),
+                filter_key='focus_countries',
+                weight=13,
+                collection_key='F29UQFBX',
             )
         )
 

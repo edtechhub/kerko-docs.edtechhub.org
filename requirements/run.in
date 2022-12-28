@@ -1,7 +1,7 @@
 environs>=9.3.0
 Flask-Assets
 jsmin>=2.2.2
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@acdf73a7b6ab6beb03826d47ef2d2cc8848511da
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@f9fa6d4b271f005bfb9ac02416307bceeca38b23
 libsass>=0.21.0
 python-dotenv>=0.10.2
 webassets>=2.0

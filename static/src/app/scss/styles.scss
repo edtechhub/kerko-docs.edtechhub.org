@@ -449,3 +449,8 @@ ul.navbar-nav li ul li {
     opacity: 1;
   }
 }
+
+// Hide facet count
+.facet-item-count {
+  display: none;
+}

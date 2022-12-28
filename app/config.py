@@ -83,6 +83,8 @@ class Config():
             default_item_exclude_re=r'^_exclude$',
             default_child_include_re=r'^(_publish|publishPDF)$',
             default_child_exclude_re=r'',
+            facet_initial_limit=5,
+            facet_initial_limit_leeway=2,
         )
 
         # Replace the default 'data' extractor to strip unwanted data from the Extra field.
@@ -167,6 +169,8 @@ class Config():
                 filter_key='learners',
                 weight=1,
                 collection_key='X6MP49KP',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -178,6 +182,8 @@ class Config():
                 title=_('Educators'),
                 weight=2,
                 collection_key='HCTKHFNN',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -189,6 +195,8 @@ class Config():
                 title=_('Education systems'),
                 weight=3,
                 collection_key='X3DPTXLG',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -200,6 +208,8 @@ class Config():
                 title=_('Cost effectiveness'),
                 weight=4,
                 collection_key='3TN4ME9B',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -211,6 +221,8 @@ class Config():
                 title=_('Hardware and modality'),
                 weight=5,
                 collection_key='C965YJYB',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -222,6 +234,8 @@ class Config():
                 title=_('Educational level'),
                 weight=6,
                 collection_key='B42SBYGD',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -233,6 +247,8 @@ class Config():
                 title=_('Within-country contexts'),
                 weight=7,
                 collection_key='P3Q22NYF',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -244,6 +260,8 @@ class Config():
                 title=_('Language of publication'),
                 weight=8,
                 collection_key='ZNNITHFH',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -255,6 +273,8 @@ class Config():
                 title=_('Publisher and type'),
                 weight=9,
                 collection_key='N6HGZU24',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -266,6 +286,8 @@ class Config():
                 title=_('Research method'),
                 weight=10,
                 collection_key='9WEL59XM',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -277,6 +299,8 @@ class Config():
                 title=_('COVID and reopening of schools'),
                 weight=11,
                 collection_key='NRS95TC8',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -288,6 +312,8 @@ class Config():
                 filter_key='topic_area',
                 weight=12,
                 collection_key='W6YXX3J6',
+                initial_limit=5,
+                initial_limit_leeway=2,
             )
         )
 
@@ -299,6 +325,8 @@ class Config():
                 filter_key='focus_countries',
                 weight=13,
                 collection_key='F29UQFBX',
+                initial_limit=0,
+                initial_limit_leeway=0,
             )
         )
 

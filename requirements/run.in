@@ -1,4 +1,4 @@
-environs>=5.0.0
+environs>=9.3.0
 Flask-Assets
 jsmin>=2.2.2
 kerko @ git+https://github.com/whiskyechobravo/kerko.git@acdf73a7b6ab6beb03826d47ef2d2cc8848511da

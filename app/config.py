@@ -68,6 +68,8 @@ class Config():
         self.KERKO_TEMPLATE_ITEM = 'app/item.html.jinja2'
         self.KERKO_DOWNLOAD_ATTACHMENT_NEW_WINDOW = True
         self.KERKO_RELATIONS_INITIAL_LIMIT = 50
+        self.KERKO_FEEDS = ['atom']
+        self.KERKO_FEEDS_MAX_DAYS = 0
 
         # CAUTION: The URL's query string must be changed after any edit to the CSL
         # style, otherwise zotero.org might still use a previously cached version of
@@ -399,6 +401,7 @@ class DevelopmentConfig(Config):
         self.ASSETS_DEBUG = env.bool('ASSETS_DEBUG', True)  # Don't bundle/minify static assets.
         self.LIBSASS_STYLE = 'expanded'
         self.LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG')
+        # self.EXPLAIN_TEMPLATE_LOADING = True
 
 
 class ProductionConfig(Config):

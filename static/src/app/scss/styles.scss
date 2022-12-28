@@ -357,6 +357,25 @@ ul.navbar-nav li ul li {
   max-width: 90vw;
 }
 
+// Expand/collapse.
+
+.btn-expand[aria-expanded="true"] {
+  display: none;
+}
+.btn-expand[aria-expanded="true"] + .btn-collapse {
+  display: inline;
+}
+.btn-expand[aria-expanded="false"] {
+  display: inline;
+}
+.btn-expand[aria-expanded="false"] + .btn-collapse {
+  display: none;
+}
+.continued-hint {
+  -webkit-mask-image: linear-gradient(to top, transparent, black 2.75rem);
+  mask-image: linear-gradient(to top, transparent, black 2.75rem);
+}
+
 // Print links.
 
 .no-js .print-link {
@@ -451,6 +470,6 @@ ul.navbar-nav li ul li {
 }
 
 // Hide facet count
-.facet-item-count {
-  display: none;
-}
+// .facet-item-count {
+//   display: none;
+// }

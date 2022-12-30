@@ -32,7 +32,6 @@ class Config():
 
         # Set other configuration variables.
         self.LOGGING_HANDLER = 'default'
-        self.EXPLAIN_TEMPLATE_LOADING = False
 
         self.LIBSASS_INCLUDES = [
             str(pathlib.Path(__file__).parent.parent / 'static' / 'src' / 'vendor' / 'bootstrap' / 'scss'),

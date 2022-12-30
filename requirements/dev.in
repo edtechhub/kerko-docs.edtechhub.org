@@ -1,9 +1,4 @@
--r run.txt
-pip-tools>=5.5.0
-pipdeptree
-pycodestyle>=2.8.0
-pydocstyle>=6.1.0
-pylint>=2.5.0
-rope
+-r base.txt
+Flask-Assets
+kerko[dev,tests]==0.9
 safety
-yapf

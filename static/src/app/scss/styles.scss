@@ -154,6 +154,9 @@ $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 .more-or-less[aria-expanded="false"] span.less {
   display: none;
 }
+.d-none-important {
+  display: none !important;
+}
 
 // Layout.
 
@@ -374,6 +377,12 @@ ul.navbar-nav li ul li {
 .continued-hint {
   -webkit-mask-image: linear-gradient(to top, transparent, black 2.75rem);
   mask-image: linear-gradient(to top, transparent, black 2.75rem);
+}
+.btn-toggle[active] > .btn-toggle-icon-off {
+  display: none;
+}
+.btn-toggle:not([active]) > .btn-toggle-icon-on {
+  display: none;
 }
 
 // Print links.

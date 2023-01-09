@@ -54,7 +54,7 @@ jinja2==3.0.3
     #   kerko
 jsmin==3.0.1
     # via -r requirements/base.txt
-kerko==0.9
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@1fc44fc544f825e71e281da40237b20ba2020ca6
     # via -r requirements/run.in
 libsass==0.22.0
     # via -r requirements/base.txt

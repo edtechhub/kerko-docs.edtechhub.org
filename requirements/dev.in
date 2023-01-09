@@ -1,4 +1,4 @@
 -r base.txt
 Flask-Assets
-kerko[dev,tests]==0.9
+kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git@1fc44fc544f825e71e281da40237b20ba2020ca6
 safety

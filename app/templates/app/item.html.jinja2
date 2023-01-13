@@ -6,10 +6,6 @@
     {%- endassets %}
 {% endblock kerko_item_js %}
 
-{% block open_in_zotero_js %}
-    {# Deliberately made empty. The JS code is included in the item_js asset. #}
-{% endblock open_in_zotero_js %}
-
 {% block kerko_print_js %}
     {%- if config.KERKO_PRINT_ITEM_LINK %}
         {%- assets "print_js" %}

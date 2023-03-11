@@ -54,7 +54,7 @@ jinja2==3.0.3
     #   kerko
 jsmin==3.0.1
     # via -r requirements/base.txt
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@fb2782447f689f212c8f1fb6a9a9b4e33df3a247
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@3df10d198b5d2d8b19c9b0e0cab223e334a7bd55
     # via -r requirements/run.in
 libsass==0.22.0
     # via -r requirements/base.txt
@@ -98,7 +98,7 @@ webassets==2.0
     # via
     #   -r requirements/base.txt
     #   flask-assets
-werkzeug==2.2.2
+werkzeug==2.2.3
     # via
     #   flask
     #   kerko

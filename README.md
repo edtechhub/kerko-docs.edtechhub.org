@@ -10,7 +10,7 @@ This application is built in [Python] with the [Flask] framework.
 Some things to know:
 
 - Although the structure and some bits of code are similar to [KerkoApp]
-  (version 0.5), no attempt was made in making this application compatible with
+  (version 0.9), no attempt was made in making this application compatible with
   KerkoApp in any way. Since this application is just a thin layer built over
   Kerko, it is relatively small and can follow its own destiny, separate from
   KerkoApp's.

@@ -206,7 +206,7 @@ webassets==2.0
     # via
     #   -r requirements/base.txt
     #   flask-assets
-werkzeug==2.2.2
+werkzeug==2.2.3
     # via
     #   flask
     #   kerko

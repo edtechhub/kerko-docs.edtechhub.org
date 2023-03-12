@@ -30,7 +30,7 @@
     "autoprefixer": "^9.7.0",
     "clean-css": "^4.2.1",
     "clean-css-cli": "^4.3.0",
-    "frontend-dependencies": "^1.1.7",
+    "frontend-dependencies": "^2.0.0",
     "postcss": "^8.4.4",
     "postcss-cli": "^9.0.2",
     "postcss-reporter": "^7.0.4"

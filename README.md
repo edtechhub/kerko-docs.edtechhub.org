@@ -38,7 +38,7 @@ Some things to know:
 Making changes to this application requires a Python development environment.
 Once the changes are tested in that environment, they can be pushed to the Git
 repository and deployed on the production server (see the **Deploying the
-application in production** section).
+application** section).
 
 ### Installing the application locally
 

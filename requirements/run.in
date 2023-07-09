@@ -1,3 +1,6 @@
--r base.txt
+jsmin>=2.2.2
+libsass>=0.21.0
+python-dotenv
+webassets>=2.0
 Flask-Assets
-kerko @ git+https://github.com/whiskyechobravo/kerko.git@c0f8578c9a0ddf2cdc06a33bd99aacb90ae5f23b
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@ad4193ee3c76aa3d7f267c7e04ca99fde4d75617

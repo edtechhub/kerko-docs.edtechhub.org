@@ -1,0 +1,219 @@
+ZOTERO_LIBRARY_ID = "2405685"
+ZOTERO_LIBRARY_TYPE = "group"
+BABEL_DEFAULT_LOCALE = 'en_GB'
+
+HOME_URL = "https://edtechhub.org/"
+HOME_TITLE = "The EdTech Hub"
+HOME_SUBTITLE = "Research and Innovation to fulfil the potential of EdTech"
+
+[kerko.meta]
+
+title = "Evidence Library – The EdTech Hub"
+google_analytics_id = "UA-149862882-2"
+
+[kerko.link_groups]
+
+    [kerko.link_groups.breadcrumb_base]
+
+        [[kerko.link_groups.breadcrumb_base.links]]
+        type = "url"
+        url = "https://edtechhub.org/"
+        label = "EdTech Hub"
+
+        [[kerko.link_groups.breadcrumb_base.links]]
+        type = "url"
+        url = "https://edtechhub.org/evidence/"
+        label = "Evidence"
+
+        [[kerko.link_groups.breadcrumb_base.links]]
+        type = "endpoint"
+        label = "Evidence Library"
+        endpoint = "kerko.search"
+
+[kerko.features]
+
+download_attachment_new_window = true
+open_in_zotero_app = true
+open_in_zotero_web = true
+print_item_link = true
+print_results_link = true
+results_abstracts = true
+results_abstracts_max_length = 500
+results_abstracts_max_length_leeway = 40
+relations_initial_limit = 50
+
+[kerko.search]
+
+whoosh_language = "en"
+result_fields = ["id", "attachments", "bib", "data", "preview", "url"]
+
+[kerko.templates]
+
+layout = "kerkoapp/layout.html.jinja2"
+search = "kerkoapp/search.html.jinja2"
+search_item = "kerkoapp/search-item.html.jinja2"
+item = "kerkoapp/item.html.jinja2"
+
+[kerko.zotero]
+
+locale = "en-GB"
+
+# CAUTION: The URL's query string (after the '?') must be changed after any edit
+# to the CSL style, otherwise zotero.org might still use a previously cached
+# version of the file.
+csl_style = "https://docs.edtechhub.org/static/dist/csl/eth_apa.xml?202012301815"
+
+item_exclude_re = "^_exclude$"
+
+child_include_re = "^(_publish|publishPDF)$"
+child_exclude_re = ""
+
+[kerko.facets]
+
+    [kerko.facets.tag]
+    enabled = false
+
+    [kerko.facets.link]
+    enabled = false
+
+    [kerko.facets.item_type]
+    enabled = false
+
+    [kerko.facets.learners]
+    enabled = true
+    type = "collection"
+    collection_key = "X6MP49KP"
+    filter_key = "learners"
+    title = "Learners"
+    weight = 1
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.educators]
+    enabled = true
+    type = "collection"
+    collection_key = "HCTKHFNN"
+    filter_key = "educators"
+    title = "Educators"
+    weight = 2
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.education_systems]
+    enabled = true
+    type = "collection"
+    collection_key = "X3DPTXLG"
+    filter_key = "education_systems"
+    title = "Education systems"
+    weight = 3
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.cost_effectiveness]
+    enabled = true
+    type = "collection"
+    collection_key = "3TN4ME9B"
+    filter_key = "cost_effectiveness"
+    title = "Cost effectiveness"
+    weight = 4
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.hardware_and_modality]
+    enabled = true
+    type = "collection"
+    collection_key = "C965YJYB"
+    filter_key = "hardware_and_modality"
+    title = "Hardware and modality"
+    weight = 5
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.educational_level]
+    enabled = true
+    type = "collection"
+    collection_key = "B42SBYGD"
+    filter_key = "educational_level"
+    title = "Educational level"
+    weight = 6
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.within_country_contexts]
+    enabled = true
+    type = "collection"
+    collection_key = "P3Q22NYF"
+    filter_key = "within_country_contexts"
+    title = "Within-country contexts"
+    weight = 7
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.language_of_publication]
+    enabled = true
+    type = "collection"
+    collection_key = "ZNNITHFH"
+    filter_key = "language_of_publication"
+    title = "Language of publication"
+    weight = 8
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.publisher_type]
+    enabled = true
+    type = "collection"
+    collection_key = "N6HGZU24"
+    filter_key = "publisher_type"
+    title = "Publisher and type"
+    weight = 9
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.research_method]
+    enabled = true
+    type = "collection"
+    collection_key = "9WEL59XM"
+    filter_key = "research_method"
+    title = "Research method"
+    weight = 10
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.covid_and_reopening_of_schools]
+    enabled = true
+    type = "collection"
+    collection_key = "NRS95TC8"
+    filter_key = "covid_and_reopening_of_schools"
+    title = "COVID and reopening of schools"
+    weight = 11
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.topic_area]
+    enabled = true
+    type = "collection"
+    collection_key = "W6YXX3J6"
+    filter_key = "topic_area"
+    title = "Topic Area"
+    weight = 12
+    initial_limit = 6
+    initial_limit_leeway = 4
+
+    [kerko.facets.focus_countries]
+    enabled = true
+    type = "collection"
+    collection_key = "F29UQFBX"
+    filter_key = "focus_countries"
+    title = "Focus Countries"
+    weight = 13
+    initial_limit = 0
+    initial_limit_leeway = 0
+
+[kerkoapp.proxy_fix]
+
+enabled = false
+x_for = 1
+x_proto = 1
+x_host = 0
+x_port = 0
+x_prefix = 0

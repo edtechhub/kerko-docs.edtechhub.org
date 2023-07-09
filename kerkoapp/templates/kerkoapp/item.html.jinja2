@@ -7,7 +7,7 @@
 {% endblock kerko_item_js %}
 
 {% block kerko_print_js %}
-    {%- if config.KERKO_PRINT_ITEM_LINK %}
+    {%- if config.kerko.features.print_item_link %}
         {%- assets "print_js" %}
             <script src="{{ ASSET_URL }}"></script>
         {%- endassets %}

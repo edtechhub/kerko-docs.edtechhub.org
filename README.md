@@ -203,9 +203,10 @@ any change will be overwritten by the build process.
 ## Managing the translations
 
 This application maintains its own translations of Kerko's messages. These can
-be updated from a local install of Kerko. All of the commands below should be
-run from Kerko's directory and specify the application's `translations`
-directory (here indicated by `YOUR_TRANSLATIONS_DIR`).
+be updated from a local install of Kerko, i.e., installed with `pip install -e
+kerko==VERSION`. All of the commands below should be run from Kerko's directory
+and specify the application's `translations` directory (here indicated by
+`YOUR_TRANSLATIONS_DIR`).
 
 Create a new PO file (for a new locale) based on the POT file. Replace
 `YOUR_LOCALE` with the appropriate language code, e.g., `en_GB`:

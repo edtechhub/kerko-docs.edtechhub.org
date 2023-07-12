@@ -1,3 +1,3 @@
 -r run.txt
-kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git@ad4193ee3c76aa3d7f267c7e04ca99fde4d75617
+kerko[dev,tests] @ git+https://github.com/whiskyechobravo/kerko.git@373da720bf98c1bdf65b2d5fe2a20448be627ef7
 safety

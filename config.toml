@@ -11,22 +11,20 @@ google_analytics_id = "UA-149862882-2"
 
 [kerko.link_groups]
 
-    [kerko.link_groups.breadcrumb_base]
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "EdTech Hub"
+    type = "url"
+    url = "https://edtechhub.org/"
 
-        [[kerko.link_groups.breadcrumb_base.links]]
-        type = "url"
-        url = "https://edtechhub.org/"
-        label = "EdTech Hub"
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "Evidence"
+    type = "url"
+    url = "https://edtechhub.org/evidence/"
 
-        [[kerko.link_groups.breadcrumb_base.links]]
-        type = "url"
-        url = "https://edtechhub.org/evidence/"
-        label = "Evidence"
-
-        [[kerko.link_groups.breadcrumb_base.links]]
-        type = "endpoint"
-        label = "Evidence Library"
-        endpoint = "kerko.search"
+    [[kerko.link_groups.breadcrumb_base]]
+    text = "Evidence Library"
+    type = "endpoint"
+    endpoint = "kerko.search"
 
 [kerko.features]
 

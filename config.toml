@@ -61,7 +61,7 @@ csl_style = "https://docs.edtechhub.org/static/dist/csl/eth_apa.xml?202012301815
 
 item_exclude_re = "^_exclude$"
 
-child_include_re = "^(_publish|publishPDF)$"
+child_include_re = "^(_publish)|(publishPDF)$"
 child_exclude_re = ""
 
 [kerko.facets]

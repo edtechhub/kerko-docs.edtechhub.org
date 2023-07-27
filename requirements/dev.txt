@@ -253,8 +253,9 @@ typing-extensions==4.6.2
     #   pytoolconfig
     #   responses
     #   tox
-urllib3==2.0.2
+urllib3==1.26.16
     # via
+    #   -r requirements/dev.in
     #   -r requirements/run.txt
     #   requests
     #   responses

@@ -40,8 +40,9 @@ relations_initial_limit = 50
 
 [kerko.search]
 
-whoosh_language = "en"
 result_fields = ["id", "attachments", "bib", "data", "preview", "url"]
+whoosh_language = "en"
+whoosh_limitmb = 64
 
 [kerko.templates]
 

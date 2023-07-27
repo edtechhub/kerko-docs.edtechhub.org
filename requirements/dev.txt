@@ -113,7 +113,7 @@ jinja2==3.1.2
     #   kerko
 jsmin==3.0.1
     # via -r requirements/run.txt
-kerko[dev,tests]==1.0.0
+kerko @ git+https://github.com/whiskyechobravo/kerko.git@67bad951c1cbee59145c0e20925280491ca29711
     # via
     #   -r requirements/dev.in
     #   -r requirements/run.txt

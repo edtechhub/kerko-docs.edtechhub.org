@@ -3,22 +3,23 @@
 This application uses [Kerko] to provide a user-friendly search and browsing
 web interface for a bibliography managed with the [Zotero] reference manager.
 
-## About this application
+This is a fork of [KerkoApp] (version 1.0).
 
-This application is built in [Python] with the [Flask] framework.
+## About this application
 
 Some things to know:
 
-- Although the structure and some bits of code are similar to [KerkoApp]
-  (version 0.9), no attempt was made in making this application compatible with
+- Although the structure and some bits of code are similar to the standard
+  KerkoApp, there is no guaranty that this application is compatible with
   KerkoApp in any way. Since this application is just a thin layer built over
-  Kerko, it is relatively small and can follow its own destiny, separate from
-  KerkoApp's.
-- Configuration is generally done in `app/config.py`, except for secret keys
-  that should _not_ be stored in source control (per the [Twelve-factor
-  App](https://12factor.net/config) methodology).
-- Some of Kerko's templates are overridden (see the `app/templates/app/`
-  directory).
+  Kerko, it is relatively small and can follow its own destiny.
+- Configuration is generally done in `config.toml`, except for secret keys that
+  should _not_ be stored in source control and thus go to `.secrets.toml`.
+  Please refer to Kerko's [documentation on configuration][Kerko_config] for
+  details.
+- More advanced customizations are generally done in `kerkoapp/config.py`.
+- Some of Kerko's templates are overridden (see the
+  `kerkoapp/templates/kerkoapp/` directory).
 - The custom Sass stylesheet takes advantage of Bootstrap's theming capabilities
   (see `static/src/app/scss/styles.scss`).
 - Front-end assets such as CSS, JavaScript and icons are bundled with the
@@ -64,20 +65,8 @@ Steps:
 
    This will install many packages required by Kerko and this application.
 
-2. Copy `dotenv.sample` to `.env`. Open `.env` in a text editor to assign proper
-   values to the variables outlined below.
-
-   * `SECRET_KEY`: This variable is required for generating secure tokens in web
-     forms. It should have a secure, random value and it really has to be
-     secret. For this reason, never add your `.env` file to a code repository.
-   * `KERKO_ZOTERO_API_KEY`: The API key associated to the library on
-     zotero.org. You may have to [create that
-     key](https://www.zotero.org/settings/keys/new).
-   * `KERKO_ZOTERO_LIBRARY_ID`: Your personal _userID_ for API calls, as given
-     [on zotero.org](https://www.zotero.org/settings/keys) (you must be
-     logged-in on zotero.org).
-   * `KERKO_ZOTERO_LIBRARY_TYPE`: The type of library on zotero.org (either
-     `'user'` for your main personal library, or `'group'` for a group library).
+2. Copy `sample.secrets.toml` to `.secrets.toml`. Open `.secrets.toml` in a text
+   editor to assign proper values to the variables.
 
 3. Synchronize data from zotero.org:
 
@@ -85,10 +74,9 @@ Steps:
    flask kerko sync
    ```
 
-   If you have a large bibliography and/or large file attachments, that command
-   may take a while to complete (and there is no progress indicator). In
-   production use, that command is usually added to the crontab file for regular
-   execution.
+   For a large bibliography and/or large file attachments, that command may take
+   a while to complete. In production use, that command is usually added to the
+   crontab file for regular execution.
 
    Note that Kerko provides a few Flask subcommands. To list them all:
 
@@ -129,8 +117,8 @@ With your virtual environment active, to upgrade a package PACKAGE to its latest
 version and synchronize all installed dependencies:
 
 ```bash
-pip-compile --upgrade-package PACKAGE --output-file requirements/run.in
-pip-compile --upgrade-package PACKAGE --output-file requirements/dev.in
+pip-compile --upgrade-package PACKAGE --allow-unsafe --resolver=backtracking --output-file requirements/run.in
+pip-compile --upgrade-package PACKAGE --allow-unsafe --resolver=backtracking --output-file requirements/dev.in
 pip-sync requirements/dev.txt
 ```
 
@@ -163,19 +151,25 @@ After a build (see the **Building the assets** section below) and adequate
 testing, the updated `package.json` and `package-lock.json` files can be pushed
 to the repository.
 
-### Upgrading Kerko or changing Kerko's configuration
+### Upgrading or changing the configuration
 
-Kerko can be upgraded like regular Python packages (see **Upgrading Python
-dependencies**). However, make sure to check [Kerko's changelog][Kerko_changelog].
-The upgrade may require some changes to this application, or a rebuild of the
-search index.
+Kerko can be upgraded like regular Python packages (see [upgrading Python
+dependencies](#upgrading-python-dependencies)). Make sure to check the
+following sources before attempting an upgrade:
 
-Similarly, some change to Kerko's configuration, especially changes to the
-`KERKO_COMPOSER` variable in this application's `app/config.py`, may have an
-impact on the structure of the search index. A rebuild of the search index may
-be necessary after such change.
+- [Kerko changelog][Kerko_changelog]
+- [KerkoApp changelog][KerkoApp_changelog]
+- [Kerko upgrading documentation][Kerko_upgrading]
 
-With your virtual environment active, to rebuild the search index:
+Making any change to a configuration file requires that you at least restart the
+application afterwards for the change to become effective.
+
+Moreover, some parameters have an effect on the structure of the cache or the
+search index that Kerko depends on. Changing this kind of parameter may require
+that you rebuild either. Refer to the documentation of the parameter to check if
+specific actions need to be taken after a change.
+
+For example, to rebuild the search index:
 
 ```bash
 flask kerko clean index
@@ -191,13 +185,12 @@ and with your virtual environment active:
 
 ```bash
 export PATH=`pwd`/node_modules/.bin:${PATH}
-flask assets build
+flask --debug assets build
 ```
 
 If you're happy with the results, build the minified assets for production use:
 
 ```bash
-export ASSETS_DEBUG=False
 flask assets build
 ```
 
@@ -210,9 +203,10 @@ any change will be overwritten by the build process.
 ## Managing the translations
 
 This application maintains its own translations of Kerko's messages. These can
-be updated from a local install of Kerko. All of the commands below should be
-run from Kerko's directory and specify the application's `translations`
-directory (here indicated by `YOUR_TRANSLATIONS_DIR`).
+be updated from a local install of Kerko, i.e., installed with `pip install -e
+kerko==VERSION`. All of the commands below should be run from Kerko's directory
+and specify the application's `translations` directory (here indicated by
+`YOUR_TRANSLATIONS_DIR`).
 
 Create a new PO file (for a new locale) based on the POT file. Replace
 `YOUR_LOCALE` with the appropriate language code, e.g., `en_GB`:
@@ -278,8 +272,9 @@ The following procedure has to be performed only once.
    ssh {instance_id}@console.{datacenter_id}.gpaas.net
    ```
 
-8. In the instance, create the `.env` file in `/srv/data/web/vhosts/default/`.
-   See step 2 of **Installing the application locally** for details.
+8. In the instance, create the `.secrets.toml` file in
+   `/srv/data/web/vhosts/default/`. See step 2 of [Installing the application
+   locally](#installing-the-application-locally) for details.
 
 9.  Synchronize data from zotero.org:
 
@@ -329,8 +324,11 @@ production.
 
 [Flask]: https://pypi.org/project/Flask/
 [Kerko]: https://github.com/whiskyechobravo/kerko
-[Kerko_changelog]: https://github.com/whiskyechobravo/kerko/blob/master/CHANGELOG.md
+[Kerko_changelog]: https://whiskyechobravo.github.io/kerko/latest/changelog/
+[Kerko_config]: https://whiskyechobravo.github.io/kerko
+[Kerko_upgrading]: https://whiskyechobravo.github.io/kerko/latest/upgrading/
 [KerkoApp]: https://github.com/whiskyechobravo/kerkoapp
+[KerkoApp_changelog]: https://github.com/whiskyechobravo/kerkoapp/blob/main/CHANGELOG.md
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
 [Python]: https://www.python.org/

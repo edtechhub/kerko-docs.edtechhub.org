@@ -16,6 +16,8 @@ eggs/
 *.egg
 *.egg-info/
 env/
+venv/
+.venv/
 node_modules/
 static/src/vendor/
 .tool-versions
@@ -35,11 +37,8 @@ coverage.xml
 # Logs.
 *.log
 
-# Sphinx documentation.
-docs/_build/
-
-# DotEnv configuration.
-.env
+# Documentation build.
+/site/
 
 # Development tools / IDEs.
 .idea
@@ -57,5 +56,11 @@ docs/_build/
 *.bak
 *.old
 
+# Configuration files.
+.env
+.secrets.*
+instance.*
+
 # Application data.
 data/
+instance/

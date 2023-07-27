@@ -66,6 +66,7 @@ $input-border-color: $border-color;
 $dropdown-border-color: $border-color;
 $pagination-border-color: $border-color;
 $pagination-disabled-border-color: $border-color;
+$breadcrumb-bg: #f8f9fa;
 
 $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 
@@ -91,7 +92,7 @@ $dropdown-link-hover-bg: #dee2e6;  // $gray-300
 @import "nav";
 @import "navbar";
 @import "card";
-// @import "breadcrumb";
+@import "breadcrumb";
 @import "pagination";
 @import "badge";
 // @import "jumbotron";
@@ -165,7 +166,7 @@ main {
   padding-top: 1rem;
   padding-bottom: 1rem;
   @include media-breakpoint-up(lg) {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
     padding-bottom: 3rem;
   }
 }

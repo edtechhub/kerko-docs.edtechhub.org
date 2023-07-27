@@ -1,7 +1,7 @@
 {% extends 'kerko/layout.html.jinja2' %}
 
 {% block meta_title_inner -%}
-    {%- if title %}{{ title|striptags|escape }} – {% endif %}{{ config.KERKO_TITLE|striptags|escape -}}
+    {%- if title %}{{ title|striptags|escape }} – {% endif %}{{ config.kerko.meta.title|striptags|escape -}}
 {% endblock %}
 
 {%- block metas %}
@@ -47,39 +47,39 @@
                                 <a class="nav-link" href="{{ config.HOME_URL }}">{{ _('Home') }}</a>
                             </li>
                             <li class="nav-item menu-item-has-children">
-                                <a class="nav-link" href="{{ config.ABOUT_WHAT_WE_DO }}">{{ _('About us') }}</a>
+                                <a class="nav-link" href="https://edtechhub.org/what-we-do/">{{ _('About us') }}</a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item"><a href="{{ config.ABOUT_WHAT_WE_DO }}"><span>{{ _('WHAT WE DO') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_WHERE_WE_WORK }}"><span>{{ _('WHERE WE WORK') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_OUR_TEAM }}"><span>{{ _('OUR TEAM') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_STRATEGIC_ADVISORY }}"><span>{{ _('STRATEGIC ADVISORY BOARD & EXECUTIVE COMMITTEE') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.ABOUT_SPECIALIST_NETWORK }}"><span>{{ _('SPECIALIST NETWORK') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/what-we-do/"><span>{{ _('WHAT WE DO') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/where-we-work/"><span>{{ _('WHERE WE WORK') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/our-team/"><span>{{ _('OUR TEAM') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/strategic-advisory-board/"><span>{{ _('STRATEGIC ADVISORY BOARD & EXECUTIVE COMMITTEE') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/specialist-network/"><span>{{ _('SPECIALIST NETWORK') }}</span></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ config.TOOLS_DATABASE_URL }}">{{ _('Tools') }}</a>
+                                <a class="nav-link" href="https://database.edtechhub.org/">{{ _('Tools') }}</a>
                             </li>
                             <li class="nav-item menu-item-has-children active">
-                                <a class="nav-link" href="{{ config.EVIDENCE_ABOUT_URL }}">{{ _('Evidence') }}</a>
+                                <a class="nav-link" href="https://edtechhub.org/evidence/">{{ _('Evidence') }}</a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_ABOUT_URL }}"><span>{{ _('ABOUT EVIDENCE IN EDTECH') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/evidence/"><span>{{ _('ABOUT EVIDENCE IN EDTECH') }}</span></a></li>
                                     <li class="menu-item active"><a href="{{ url_for('kerko.search') }}"><span>{{ _('EVIDENCE LIBRARY') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_COUNTRY_ENGAGEMENT_URL }}"><span>{{ _('COUNTRY ENGAGEMENT') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_TOPIC_AREAS_URL }}"><span>{{ _('TOPIC AREAS') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_RESEARCH_PORTFOLIO_URL }}"><span>{{ _('RESEARCH PORTFOLIO') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_SANDBOXES_URL }}"><span>{{ _('SANDBOXES') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.EVIDENCE_HELPDESK_URL }}"><span>{{ _('HELPDESK') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/where-we-work/"><span>{{ _('COUNTRY ENGAGEMENT') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/our-topic-areas/"><span>{{ _('TOPIC AREAS') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/evidence/edtech-hub-research-portfolio/"><span>{{ _('RESEARCH PORTFOLIO') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/sandboxes/"><span>{{ _('SANDBOXES') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/edtech-hub-helpdesk/"><span>{{ _('HELPDESK') }}</span></a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ config.BLOG_URL }}">{{ _('Blog') }}</a>
+                                <a class="nav-link" href="https://edtechhub.org/blog/">{{ _('Blog') }}</a>
                             </li>
                             <li class="nav-item menu-item-has-children">
-                                <a class="nav-link" href="{{ config.CONNECT_WITH_US_URL }}">{{ _('CONNECT WITH US') }}</a>
+                                <a class="nav-link" href="https://edtechhub.org/connect-with-edtech-hub/">{{ _('CONNECT WITH US') }}</a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item"><a href="{{ config.CONNECT_WITH_US_NEWSLETTER_URL }}"><span>{{ _('NEWSLETTER') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.CONNECT_WITH_US_EVENTS_URL }}"><span>{{ _('EVENTS') }}</span></a></li>
-                                    <li class="menu-item"><a href="{{ config.CONNECT_WITH_US_CONTACT_URL }}"><span>{{ _('CONTACT US') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/newsletter/"><span>{{ _('NEWSLETTER') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/events/"><span>{{ _('EVENTS') }}</span></a></li>
+                                    <li class="menu-item"><a href="https://edtechhub.org/connect-with-edtech-hub/#contact"><span>{{ _('CONTACT US') }}</span></a></li>
                                 </ul>
                             </li>
                         {%- endblock navbar_items %}
